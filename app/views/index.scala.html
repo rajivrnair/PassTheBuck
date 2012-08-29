@@ -1,0 +1,130 @@
+@(teams: List[Team], teamForm: Form[Team])
+
+@import helper._
+
+<!DOCTYPE html>
+
+<html>
+<head>
+	<title>Pass The Buck</title>
+	<link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+	<link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/reset.css")">
+	<link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/app-classes.css")">
+	<link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/style.css")">
+</head>
+<body>
+	<!-- TODO: Need to add filters at the top of the page to change team/category -->
+	<h1>@teams.size() team(s) found!</h1>
+	<ul>
+	@for(t <- teams) {
+		<li>@t.getName()</li>
+	}
+	</ul>
+	<!-- Form 1: Create a category, e.g., '1st Round' or '2nd Round' -->
+
+	<div class="content">
+		<form name="category" action="/createCategory.do" method="post">
+			<h2>Create a Category</h2>
+			Category Name: <input type="text" id="categoryName" /> <br />
+			Duration In Minutes: <input type="text" id="categoryDuration" /> <br />
+			Credits: <input type="text" id="categoryCredits" /> <br />
+			<input type="submit" value="Submit" />
+		</form>
+	</div>
+
+	<!-- Form 2: Create a team, e.g., 'Cobalt B/E' or 'Cobalt UI' -->
+
+	<div class="team">
+	@form(action= routes.Teams.newTeam(), 'name -> "team") {
+		@inputText(teamForm("name"), 'id -> "teamName", 'size -> 30, 'class -> "input-css", '_label -> "Enter Team Name", '_class -> "overall-css", '_help -> "")
+		<input type="submit" value="Submit" />
+	}
+<!-- 		<form name="team" action="/createTeam.do" method="post"> -->
+<!-- 			<h2>Create a Team</h2> -->
+<!-- 			Enter the team's name: <input type="text" id="teamName" /> <br /> -->
+<!-- 			Associate Categories: <input type="text" id="teamCategories" disabled="true" value="multi-select categories" /> <br />  -->
+<!-- 			<input type="submit" value="Submit" /> -->
+<!-- 		</form> -->
+	</div>
+
+	<!-- Form 3: Create a task, e.g., '1st round interview of GyanaSagar' -->
+	<div class="task">
+		<form name="task" action="/createTask.do" method="post">
+			<h2>Create a Task</h2>
+			Name: <input type="text" id="taskName" /> <br />
+			Description: <input type="text" id="taskDescription" /> <br />
+			Start's On: <input type="text" disabled="true" id="taskStartDate" value="choose date" /> At: <input type="text" disabled="true" id="taskStartTime" value="choose time" /> <br />
+			Category: <input type="text" id="taskCategory" disabled="true" value="dropdown of categories" /> <br />
+			Assign To: <input type="text" id="taskAssignedTo" disabled="true" value="dropdown of users" /> <br />
+			<input type="submit" value="Submit" />
+		</form>
+	</div>
+	<!-- List of credits and other info -->
+	<ul class="yourstats">
+		<li class="header"><span>Your Stats</span></li>
+		<li>
+			<!-- Title --> <span>My Tasks this quarter</span> <span>25</span>
+		</li>
+		<li><span>My Credits</span> <span>180</span></li>
+	</ul>
+	<ul class="teamstats">
+		<li class="header"><span>Team Stats</span></li>
+		<li>
+			<!-- Title --> <span>Total tasks this quarter</span> <span>270</span>
+		</li>
+		<li><span>Total time spent on tasks this quarter</span> <span>200
+				hrs and 17 mins</span></li>
+	</ul>
+	<ul class="credits">
+
+		<li class="header"><span>Highest and Lowest Credits</span></li>
+		<li>
+			<!-- Title --> <span>Rockstars</span> <span>Credits</span>
+		</li>
+		<li><span>Poriki</span> <span>250</span></li>
+		<li><span>Pokkiri</span> <span>220</span></li>
+		<li>
+			<!-- Title --> <span>Slackers</span> <span>Credits</span>
+		</li>
+		<li><span>Otha</span> <span>100</span></li>
+		<li><span>Ommala</span> <span>120</span></li>
+	</ul>
+
+	<!-- List of tasks for current date and current team -->
+	<table class="interviewTable">
+		<thead>
+			<tr>
+				<th>Name and Description</th>
+				<th>Date</th>
+				<!-- Move this elsewhere? -->
+				<th>Time</th>
+				<th>Assigned To</th>
+				<th>Category</th>
+				<th>Status</th>
+				<th>Comments</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Kuppasamy</td>
+				<td>10/10/2012</td>
+				<td>10:00</td>
+				<td>Otha</td>
+				<td>2nd Round</td>
+				<td>RESCHEDULED</td>
+				<td>[Otha]: Candidate has exam-fever.</td>
+			</tr>
+			<tr>
+				<td>Yerimaisamy</td>
+				<td>10/10/2012</td>
+				<td>13:00</td>
+				<td>Pokkiri</td>
+				<td>1st Round Telephonic</td>
+				<td>PASSED</td>
+				<td>[Pokkiri]: Candidate was good in Core Java and Web. Proceed
+					to second round.</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>
