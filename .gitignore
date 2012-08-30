@@ -9,3 +9,5 @@ dist
 .project
 .settings/
 .target/
+.cache
+bin/
