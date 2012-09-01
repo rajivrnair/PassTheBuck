@@ -22,10 +22,10 @@ public class Task extends Model {
 	public String name;
 
 	public String description;
-	public LocalDate startDate;
-	public LocalTime startTime;
+	public LocalDate scheduledDate;
+	public LocalTime scheduledTime;
 	public Category category;
-	public User assignedTo;
+	public List<User> assignedTo;
 	public User createdBy;
 	public Status status = Status.NOT_STARTED;
 	public List<Comment> comments;
