@@ -36,4 +36,3 @@ Eclipse
 I've installed the 2.9.x version which is available at http://scala-ide.org/download/current.html. Copy the update site url and install it in Eclipse. Look at http://scala-ide.org/docs/user/advancedsetup.html and remember to set the JDT setting.
 
 4. By now you should've imported the project into eclipse. You might still see some errors but playing around with the classpath in Eclipse should see you through. What're you waiting for? Start Coding!
-
