@@ -3,7 +3,9 @@ package models;
 import java.util.ArrayList;
 import java.util.List;
 
-public class User {
+import play.db.ebean.Model;
+
+public class User extends Model {
 	private static final long serialVersionUID = 1L;
 
 	public Long id;

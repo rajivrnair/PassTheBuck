@@ -3,7 +3,10 @@ package models;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Category {
+import play.db.ebean.Model;
+
+public class Category extends Model{
+	private static final long serialVersionUID = 1L;
 
 	public Long id;
 	public String name;
