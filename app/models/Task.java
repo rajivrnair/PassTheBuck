@@ -5,8 +5,7 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-import org.joda.time.LocalDate;
-import org.joda.time.LocalTime;
+import org.joda.time.LocalDateTime;
 
 import play.data.validation.Constraints.Required;
 import play.db.ebean.Model;
@@ -20,10 +19,16 @@ public class Task extends Model {
 
 	@Required
 	public String name;
-
+	
 	public String description;
-	public LocalDate scheduledDate;
-	public LocalTime scheduledTime;
+
+	@Required
+	public String startDate;
+	public String startHour;
+	public String startMinute;
+	// Calculated using the above fields.
+	public LocalDateTime scheduledStart;
+	
 	public Category category;
 	public List<User> assignedTo;
 	public User createdBy;

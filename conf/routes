@@ -5,10 +5,13 @@
 # Home page
 GET     /                       controllers.Application.index()
 
-# Tasks
-GET     /teams					controllers.Teams.index()
-POST    /teams                  controllers.Teams.newTeam()
-#POST    /teams/:id/delete       controllers.Teams.deleteTeam(id: Long)
+# Create stuff
+POST    /team					controllers.Application.newTeam()
+POST	/task					controllers.Application.newTask()
+POST	/category				controllers.Application.newCategory()
+
+#GET     /teams					controllers.Application.index()
+#POST    /teams/:id/delete       controllers.Application.deleteTeam(id: Long)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

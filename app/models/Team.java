@@ -17,6 +17,7 @@ public class Team extends Model {
 	
 	@Required
 	public String name;
+
 	public String description;
 	public List<Task> tasks;
 	public List<Category> associatedCategories;

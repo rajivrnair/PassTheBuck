@@ -1,6 +1,6 @@
-div.content,div.task {
+/*div.content,div.task, div.team {
 	display: none;
-}
+}*/
 ul.yourstats,ul.teamstats,ul.credits {
     background-color: #D9DB56;
     float: right;
