@@ -19,8 +19,8 @@ public class Team extends Model {
 	public String name;
 
 	public String description;
-	public List<Task> tasks;
-	public List<Category> associatedCategories;
+	public List<String> tasks;
+	public List<String> associatedCategories;
 	
 	public static Finder<Long, Team> find = new Finder<Long, Team>(Long.class, Team.class);
 	

@@ -17,7 +17,7 @@
 	<h2>@teams.size() team(s) found!</h2>
 	<ul>
 	@for(t <- teams) {
-		<li>@t.name</li>
+		<li>@t.name </li>
 	}
 	</ul>
 
@@ -49,7 +49,6 @@
 	<div class="team">
 	@form(action= routes.Application.newTeam(), 'name -> "team") {
 		@inputText(teamForm("name"), 'id -> "teamName", 'size -> 30, 'class -> "input-css", '_label -> "Team Name", '_class -> "overall-css", '_help -> "")
-		<!-- TODO: Associate categories. -->
 		<input type="submit" value="Submit" />
 	}
 <!-- 		<form name="team" action="/createTeam.do" method="post"> -->
@@ -70,6 +69,16 @@
 		<!-- These two need to be on the same line -->
 		@inputText(taskForm("startHour"), 'id -> "startHour", 'size -> 2, 'class -> "input-css", '_label -> "At Hour:", '_class -> "overall-css", '_help -> "")
 		@inputText(taskForm("startMinute"), 'id -> "startMin", 'size -> 2, 'class -> "input-css", '_label -> "Min:", '_class -> "overall-css", '_help -> "")
+
+<!-- Figure out how to bind this to a category object
+		@select(
+        teamForm("associatedCategories"), 
+	        options = options(Category.list),
+	        '_default -> "--- Choose a category ---",
+	        '_label -> "Associate Category",
+	        '_error -> teamForm("associatedCategories").error.map(_.withMessage("Please select a category"))
+		)
+-->
 		<input type="submit" value="Submit" />
 	}
 <!--

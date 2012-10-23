@@ -1,5 +1,6 @@
 package models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -34,4 +35,13 @@ public class Category extends Model{
 	public static void delete(Long id) {
 		find.ref(id).delete();
 	}
+	
+	public static List<String> list() {
+		List<String> categoriesList = new ArrayList<String>();
+		for(Category cat : all()) {
+			categoriesList.add(cat.name);
+		}
+		return categoriesList;
+	}
+	
 }
