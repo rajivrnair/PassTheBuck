@@ -1,9 +1,52 @@
-/*div.content,div.task, div.team {
+div.category,div.task, div.team {
 	display: none;
-}*/
+}
+body > header {
+	background-color: #292929;
+}
+header > div {
+	height:180px;
+}
+header #logo {
+	background: url("../images/logo.png") no-repeat scroll 0 0 transparent;
+	text-indent:-9999em;
+	display: block;
+	height:40px;
+	width: 150px;
+	position: absolute;
+	top:50px;
+	left:130px;
+}
+div#container {
+	background-color: #FFFFFF;
+	width:1000px;
+	position: relative;
+	top:-78px;
+	margin: 0 auto;
+	padding: 10px;
+	height: 900px;
+}
+div.content {
+	background: url("../images/pattern.gif") repeat-x scroll 0 0 white
+}
+nav.main {
+	display: block;
+	color:#fff;
+	float: left;
+	position: relative;
+	margin-top: 55px;
+	left: 480px;
+}
+nav.main ul li {
+	float: left;
+	margin-right: 15px;
+	padding: 0 15px;
+}
+nav.main ul li:hover {
+	text-decoration: underline;
+	cursor: pointer;
+}
 ul.yourstats,ul.teamstats,ul.credits {
-    background-color: #D9DB56;
-    float: right;
     font-family: arial;
     font-size: 13px;
     padding:10px;
@@ -21,7 +64,7 @@ ul.yourstats li.header,ul.teamstats li.header,ul.credits li.header {
 }
 
 ul.yourstats li span:last-child, ul.teamstats li span:last-child, ul.credits li span:last-child {
-	padding-left: 10px;
+	padding-left: 10px;`
 	display: inline-block;
 	width: 100px;
 }
@@ -62,4 +105,162 @@ table.interviewTable th {
 	padding-left: 5px;
 	border-right: 1px solid #FFFFFF;
 	border-bottom: 1px solid #FFFFFF;
+}
+body aside {
+	display: block;
+	background-color: #F5F5F5;
+	float: right;
+}
+
+.clearfix:after {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+.clearfix:after {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+#main {
+	margin: 0 27px 0 0;
+    width: 683px;
+    clear: both;
+    float: left;
+}
+
+#listings {
+    border-top: 1px solid #E5E5E5;
+    margin-top: 28px;
+     clear: left;
+}
+#listings li {
+    border-bottom: 1px solid #E5E5E5;
+}
+#listings li a {
+	color:#222222;
+	text-decoration: none;
+}
+
+#listings div.user-role {
+	padding-bottom: 20px;
+}
+#listings div.user-role:hover {
+	background-color: #FFFDEB;
+}
+
+div.user-role img {
+	vertical-align: top;
+	padding-top: 5px;
+}
+#listings div.user-role div.role h3{
+	display: inline-block;
+	margin:10px 0 0 20px;
+	font-weight: bold;
+}
+#listings div.user-role div.role span.date {
+	display: table;
+	font-size:12px;
+}
+#listings li:nth-child(2n) {
+    background-color: #F5F5F5;
+}
+#listings span.assigned {
+	font-size: 11px;
+}
+#listings div.user-role span.category {
+	position: absolute;
+	padding-top:30px;
+	left: 295px;
+	font-size: 13px;
+	color: #888;
+}
+#listings div.user-role span.comment {
+	display: none;
+}
+#listings div.user-role a:hover span.comment {
+	display: block;
+}
+div.role {
+	display: inline-block;
+	margin-right: 100px;
+}
+span.status {
+  display: inline-block;
+    font-size: 11px;
+    left: 540px;
+    padding-top: 10px;
+    position: absolute;
+}
+span.status span {
+	font-size: 16px;
+	font-weight: bold;
+}
+#filtering #upper {
+	    background-color: #484848;
+    background-image: -moz-linear-gradient(center bottom , #282828 0px, #464646 50%, #535353 52%, #6F6F6F 100%);
+    background-position: 0 0;
+    height: 50px;
+}
+#upper li#categories {
+	color:#EEE;
+	padding: 10px;
+}
+
+#filtering #lower {
+    background-color: #F5F5F5;
+    border-bottom: 1px solid #E5E5E5;
+    display: block;
+    overflow: hidden;
+}
+
+#filtering #lower #types {
+    border-right: 1px solid rgba(255, 255, 255, 0.07);
+    float: left;
+    overflow: hidden;
+}
+
+.ie #filtering #lower #types li.first-child, #filtering #lower #types li:first-child {
+    border-left-width: 0;
+}
+#filtering #lower #types li {
+    border-left: 1px solid rgba(255, 255, 255, 0.07);
+    border-right: 1px solid rgba(0, 0, 0, 0.07);
+    float: left;
+    height: 34px;
+    line-height: 34px;
+    padding: 0 15px;
+    text-align: center;
+}
+#filtering #upper > ul > li {
+    border-left: 1px solid rgba(255, 255, 255, 0.15);
+    border-right: 1px solid rgba(0, 0, 0, 0.2);
+    float: left;
+    height: 30px;
+}
+#filtering #lower #types li label {
+    font-size: 13px;
+    font-weight: bold;
+}
+#filtering #upper > ul > li#search {
+    display: block;
+    padding-left: 236px;
+    position: relative;
+}
+
+#filtering #upper > ul > li#search input[name="search"] {
+    background: url("../images/magnifying.png") no-repeat scroll 10px 8px white;
+    border: 0 none;
+    border-radius: 14px 14px 14px 14px;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.35) inset;
+    font-size: 14px;
+    height: 28px;
+    line-height: 18px;
+    margin-top: 10px;
+    padding: 0 28px;
+    width: 238px;
 }

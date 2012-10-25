@@ -7,36 +7,164 @@
 <html>
 <head>
 	<title>Pass The Buck</title>
-	<link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+	<link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/passthebuck.jpg")">
 	<link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/reset.css")">
 	<link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/app-classes.css")">
 	<link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/style.css")">
 </head>
 <body>
-	<!-- TODO: Need to add filters at the top of the page to change team/category -->
-	<h2>@teams.size() team(s) found!</h2>
-	<ul>
-	@for(t <- teams) {
-		<li>@t.name </li>
-	}
-	</ul>
-
-	<h2>@categories.size() category(-ies) found!</h2>
-	<ul>
-	@for(c <- categories) {
-		<li>@c.name: @c.durationInMinutes | @c.credits</li>
-	}
-	</ul>
-
-	<h2>@tasks.size() task(s) found!</h2>
-	<ul>
-	@for(tsk <- tasks) {
-		<li>@tsk.name - @tsk.description starts on @tsk.startDate @tsk.startHour:@tsk.startMinute</li>
-	}
-	</ul>
-
-	<!-- Form 1: Create a category, e.g., '1st Round' or '2nd Round' -->
+	<header>
+		<div>
+			<a id="logo" href="#">Pass the Buck</a>
+			<nav class="main">
+				<ul class="clearfix">
+					<li>Team</li>
+					<li>Category</li>
+					<li>Task</li>
+				</ul>
+			</nav>
+		</div>
+	</header>
 	<div class="content">
+		<div id="container">
+			<!--
+			<h2>@teams.size() team(s) found!</h2>
+			<ul>
+				@for(t <- teams) {
+					<li>@t.name </li>
+				}
+			</ul>
+
+			<h2>@categories.size() category(-ies) found!</h2>
+			<ul>
+				@for(c <- categories) {
+					<li>@c.name: @c.durationInMinutes | @c.credits</li>
+				}
+			</ul>
+
+			<h2>@tasks.size() task(s) found!</h2>
+			<ul>
+				@for(tsk <- tasks) {
+					<li>@tsk.name - @tsk.description starts on @tsk.startDate @tsk.startHour:@tsk.startMinute</li>
+				}
+			</ul>
+			--!>
+	<!-- Form 1: Create a category, e.g., '1st Round' or '2nd Round' -->
+		<div id="main" class="clearfix">
+			<form id="filtering">
+				<div id="upper">
+					<ul>
+						<li id="categories">
+							ALL INTERVIEWS
+						</li>
+						<li id="search">
+							<input type="text" value="" placeholder="search..." name="search">
+						</li>
+					</ul>
+				</div>
+				<div id="lower">
+					<ul id="types">
+						<li class="be">
+							<input id="be" type="checkbox" checked="" name="be">
+							<label for="be">BE</label>
+						</li>
+						<li class="ui">
+							<input id="ui" type="checkbox" checked="" name="ui">
+							<label for="ui">UI</label>
+						</li>
+						<li class="perf">
+							<input id="perf" type="checkbox" checked="" name="perf">
+							<label for="perf">Perf</label>
+						</li>
+						<li class="qa">
+							<input id="qa" type="checkbox" checked="" name="qa">
+							<label for="qa">QA</label>
+						</li>
+
+					</ul>
+				</div>
+			</form>
+			<div id="listings-wrapper">
+				<ul id="listings">
+					<li>
+						<a href="#">
+							<div class="user-role">
+								<img src="@routes.Assets.at("images/user.png")" width="48px">
+								<div class="role">
+									<h3>Kuppusamy</h3>
+									<span class="date">02-Nov-2012 / 12.30PM</span>
+								</div>
+								<span class="assigned">Assigned to:</span><span>Rajiv Nair</span>
+								<span class="category">For a BE interview</span>
+								<span class="status">Status: <span>Reject</span></span>
+								<span class="comment">The candidate is poor in basics of Java</span>
+							</div>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<div class="user-role">
+								<img src="@routes.Assets.at("images/user_female.png")" width="48px">
+								<div class="role">
+									<h3>Mariama</h3>
+									<span class="date">02-Nov-2012 / 12.30PM</span>
+								</div>
+								<span class="assigned">Assigned to:</span><span>Vijay Nair</span>
+								<span class="category">For a UI interview</span>
+								<span class="status">Status: <span>Reject</span></span>
+								<span class="comment">The candidate is poor in basics of Java</span>
+							</div>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	
+	<aside>
+		<section>
+			<ul class="yourstats">
+				<li class="header"><span>Your Stats</span></li>
+				<li>
+					<!-- Title --> <span>My Tasks this quarter</span> <span>25</span>
+				</li>
+				<li><span>My Credits</span> <span>180</span></li>
+			</ul>
+		</section>
+
+		<section>
+			<ul class="teamstats">
+				<li class="header"><span>Team Stats</span></li>
+				<li>
+					<!-- Title --> <span>Total tasks this quarter</span> <span>270</span>
+				</li>
+				<li><span>Total time spent on tasks this quarter</span> <span>200
+					hrs and 17 mins</span>
+				</li>
+			</ul>
+		</section>	
+
+		<section>
+			<ul class="credits">
+				<li class="header"><span>Highest and Lowest Credits</span></li>
+				<li>
+					<!-- Title --> <span>Rockstars</span> <span>Credits</span>
+				</li>
+				<li><span>Poriki</span> <span>250</span></li>
+				<li><span>Pokkiri</span> <span>220</span></li>
+				<li>
+					<!-- Title --> <span>Slackers</span> <span>Credits</span>
+				</li>
+				<li><span>Otha</span> <span>100</span></li>
+				<li><span>Ommala</span> <span>120</span></li>
+			</ul>
+		</section>	
+	</aside>
+	</div>
+		</div>
+		<!-- TODO: Need to add filters at the top of the page to change team/category -->
+	
+
+	<div class="category">
 		@form(action= routes.Application.newCategory(), 'name -> "category") {
 			@inputText(categoryForm("name"), 'id -> "categoryName", 'size -> 30, 'class -> "input-css", '_label -> "Category Name", '_class -> "overall-css", '_help -> "")
 			@inputText(categoryForm("durationInMinutes"), 'id -> "durationInMinutes", 'size -> 5, 'class -> "input-css", '_label -> "Duration (in mins)", '_class -> "overall-css", '_help -> "")
@@ -94,71 +222,8 @@
 -->
 	</div>
 	<!-- List of credits and other info -->
-	<ul class="yourstats">
-		<li class="header"><span>Your Stats</span></li>
-		<li>
-			<!-- Title --> <span>My Tasks this quarter</span> <span>25</span>
-		</li>
-		<li><span>My Credits</span> <span>180</span></li>
-	</ul>
-	<ul class="teamstats">
-		<li class="header"><span>Team Stats</span></li>
-		<li>
-			<!-- Title --> <span>Total tasks this quarter</span> <span>270</span>
-		</li>
-		<li><span>Total time spent on tasks this quarter</span> <span>200
-				hrs and 17 mins</span></li>
-	</ul>
-	<ul class="credits">
-
-		<li class="header"><span>Highest and Lowest Credits</span></li>
-		<li>
-			<!-- Title --> <span>Rockstars</span> <span>Credits</span>
-		</li>
-		<li><span>Poriki</span> <span>250</span></li>
-		<li><span>Pokkiri</span> <span>220</span></li>
-		<li>
-			<!-- Title --> <span>Slackers</span> <span>Credits</span>
-		</li>
-		<li><span>Otha</span> <span>100</span></li>
-		<li><span>Ommala</span> <span>120</span></li>
-	</ul>
-
+	
 	<!-- List of tasks for current date and current team -->
-	<table class="interviewTable">
-		<thead>
-			<tr>
-				<th>Name and Description</th>
-				<th>Date</th>
-				<!-- Move this elsewhere? -->
-				<th>Time</th>
-				<th>Assigned To</th>
-				<th>Category</th>
-				<th>Status</th>
-				<th>Comments</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>Kuppasamy</td>
-				<td>10/10/2012</td>
-				<td>10:00</td>
-				<td>Otha</td>
-				<td>2nd Round</td>
-				<td>RESCHEDULED</td>
-				<td>[Otha]: Candidate has exam-fever.</td>
-			</tr>
-			<tr>
-				<td>Yerimaisamy</td>
-				<td>10/10/2012</td>
-				<td>13:00</td>
-				<td>Pokkiri</td>
-				<td>1st Round Telephonic</td>
-				<td>PASSED</td>
-				<td>[Pokkiri]: Candidate was good in Core Java and Web. Proceed
-					to second round.</td>
-			</tr>
-		</tbody>
-	</table>
+	
 </body>
 </html>
