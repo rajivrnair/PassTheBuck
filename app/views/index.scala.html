@@ -27,29 +27,7 @@
 	</header>
 	<div class="content">
 		<div id="container">
-			<!--
-			<h2>@teams.size() team(s) found!</h2>
-			<ul>
-				@for(t <- teams) {
-					<li>@t.name </li>
-				}
-			</ul>
-
-			<h2>@categories.size() category(-ies) found!</h2>
-			<ul>
-				@for(c <- categories) {
-					<li>@c.name: @c.durationInMinutes | @c.credits</li>
-				}
-			</ul>
-
-			<h2>@tasks.size() task(s) found!</h2>
-			<ul>
-				@for(tsk <- tasks) {
-					<li>@tsk.name - @tsk.description starts on @tsk.startDate @tsk.startHour:@tsk.startMinute</li>
-				}
-			</ul>
-			--!>
-	<!-- Form 1: Create a category, e.g., '1st Round' or '2nd Round' -->
+	
 		<div id="main" class="clearfix">
 			<form id="filtering">
 				<div id="upper">
@@ -163,7 +141,7 @@
 		</div>
 		<!-- TODO: Need to add filters at the top of the page to change team/category -->
 	
-
+	<!-- Form 1: Create a category, e.g., '1st Round' or '2nd Round' -->
 	<div class="category">
 		@form(action= routes.Application.newCategory(), 'name -> "category") {
 			@inputText(categoryForm("name"), 'id -> "categoryName", 'size -> 30, 'class -> "input-css", '_label -> "Category Name", '_class -> "overall-css", '_help -> "")
@@ -198,15 +176,15 @@
 		@inputText(taskForm("startHour"), 'id -> "startHour", 'size -> 2, 'class -> "input-css", '_label -> "At Hour:", '_class -> "overall-css", '_help -> "")
 		@inputText(taskForm("startMinute"), 'id -> "startMin", 'size -> 2, 'class -> "input-css", '_label -> "Min:", '_class -> "overall-css", '_help -> "")
 
-<!-- Figure out how to bind this to a category object
+-
 		@select(
-        teamForm("associatedCategories"), 
+        taskForm("category"), 
 	        options = options(Category.list),
 	        '_default -> "--- Choose a category ---",
 	        '_label -> "Associate Category",
-	        '_error -> teamForm("associatedCategories").error.map(_.withMessage("Please select a category"))
+	        '_error -> teamForm("category").error.map(_.withMessage("Please select a category"))
 		)
--->
+
 		<input type="submit" value="Submit" />
 	}
 <!--
@@ -224,6 +202,27 @@
 	<!-- List of credits and other info -->
 	
 	<!-- List of tasks for current date and current team -->
-	
+
+			<!--
+			<h2>@teams.size() team(s) found!</h2>
+			<ul>
+				@for(t <- teams) {
+					<li>@t.name </li>
+				}
+			</ul>
+
+			<h2>@categories.size() category(-ies) found!</h2>
+			<ul>
+				@for(c <- categories) {
+					<li>@c.name: @c.durationInMinutes | @c.credits</li>
+				}
+			</ul>
+-->
+			<h2>@tasks.size() task(s) found!</h2>
+			<ul>
+				@for(tsk <- tasks) {
+					<li>@tsk.name - @tsk.description starts on @tsk.startDate @tsk.startHour:@tsk.startMinute | @tsk.category</li>
+				}
+			</ul>	
 </body>
 </html>

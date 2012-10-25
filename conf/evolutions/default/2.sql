@@ -13,10 +13,10 @@ insert into category(id, name, duration_in_minutes, credits) values (2, 'II Roun
 
 -- Create tasks
 insert into task(id, name, description, start_date, start_hour,start_minute, status) 
-  values (1, 'Mister Purushan (9945668710)', '1st round f2f', '2012-10-30', '11', '00', 0);
+  values (10000, 'Mister Purushan (9945668710)', '1st round f2f', '2012-10-30', '11', '00', 0);
 
 insert into task(id, name, description, start_date, start_hour,start_minute, status) 
-  values (2, 'Miss Pombalai (9922558887)', '1st round f2f', '2012-10-30', '11', '00', 0);
+  values (20000, 'Miss Pombalai (9922558887)', '1st round f2f', '2012-10-30', '11', '00', 0);
 
 
 # --- !Downs

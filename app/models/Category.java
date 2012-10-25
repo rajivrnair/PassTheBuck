@@ -39,9 +39,8 @@ public class Category extends Model{
 	public static List<String> list() {
 		List<String> categoriesList = new ArrayList<String>();
 		for(Category cat : all()) {
-			categoriesList.add(cat.name);
+			categoriesList.add(String.valueOf(cat.id));
 		}
 		return categoriesList;
 	}
-	
 }

@@ -1,9 +1,13 @@
 package controllers;
 
+import java.text.ParseException;
+import java.util.Locale;
+
 import models.Category;
 import models.Task;
 import models.Team;
 import play.data.Form;
+import play.data.format.Formatters;
 import play.mvc.Controller;
 import play.mvc.Result;
 
@@ -32,6 +36,23 @@ public class Application extends Controller {
 	}
 	
 	public static Result newTask() {
+		
+		Formatters.register(Category.class, new Formatters.SimpleFormatter<Category>() {
+
+			@Override
+			public Category parse(String input, Locale locale)
+					throws ParseException {
+				System.out.println("input id: " + input);
+				Category byId = Category.find.byId(new Long(input));
+				return byId;
+			}
+
+			@Override
+			public String print(Category cat, Locale locale) {
+				return cat.id + ":" + cat.name;
+			}
+		});
+		
 		Form<Task> filledForm = taskForm.bindFromRequest();
 		if (filledForm.hasErrors()) {
 			return badRequest(views.html.index.render(Team.all(), teamForm, Category.all(), categoryForm, Task.all(), taskForm));
