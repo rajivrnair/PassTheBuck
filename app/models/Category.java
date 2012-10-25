@@ -1,7 +1,8 @@
 package models;
 
-import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -36,11 +37,11 @@ public class Category extends Model{
 		find.ref(id).delete();
 	}
 	
-	public static List<String> list() {
-		List<String> categoriesList = new ArrayList<String>();
+	public static Map<String, String> options() {
+		Map<String, String> categoriesMap = new LinkedHashMap<String, String>();
 		for(Category cat : all()) {
-			categoriesList.add(String.valueOf(cat.id));
+			categoriesMap.put(String.valueOf(cat.id), cat.name);
 		}
-		return categoriesList;
+		return categoriesMap;
 	}
 }

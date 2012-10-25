@@ -42,8 +42,8 @@ public class Application extends Controller {
 			@Override
 			public Category parse(String input, Locale locale)
 					throws ParseException {
-				System.out.println("input id: " + input);
 				Category byId = Category.find.byId(new Long(input));
+				System.out.println("input id: " + byId.id + " - " + byId.name);
 				return byId;
 			}
 
