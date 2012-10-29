@@ -1,4 +1,4 @@
-div.category,div.task, div.team {
+div.category,div.task{
 	display: none;
 }
 body > header {
@@ -263,4 +263,16 @@ span.status span {
     margin-top: 10px;
     padding: 0 28px;
     width: 238px;
+}
+/* Popup hold */
+.popup-hold {
+	background: url("../images/pattern.gif") repeat-x scroll 0 0 white;
+	background-color: #F5F5F5;
+	padding: 10px;
+	width: 580px;
+	position: absolute;
+	z-index: 150;
+	display: block;
+	top:230px;
+	left:230px;
 }

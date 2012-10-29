@@ -18,9 +18,9 @@
 			<a id="logo" href="#">Pass the Buck</a>
 			<nav class="main">
 				<ul class="clearfix">
-					<li>Team</li>
-					<li>Category</li>
-					<li>Task</li>
+					<li id="team">Team</li>
+					<li id="category">Category</li>
+					<li id="task">Task</li>
 				</ul>
 			</nav>
 		</div>
@@ -152,7 +152,8 @@
 	</div>
 
 	<!-- Form 2: Create a team, e.g., 'Cobalt B/E' or 'Cobalt UI' -->
-	<div class="team">
+	<div class="team popup-hold">
+		<div class="popup-text">
 	@form(action= routes.Application.newTeam(), 'name -> "team") {
 		@inputText(teamForm("name"), 'id -> "teamName", 'size -> 30, 'class -> "input-css", '_label -> "Team Name", '_class -> "overall-css", '_help -> "")
 		<input type="submit" value="Submit" />
@@ -163,6 +164,10 @@
 <!-- 			Associate Categories: <input type="text" id="teamCategories" disabled="true" value="multi-select categories" /> <br />  -->
 <!-- 			<input type="submit" value="Submit" /> -->
 <!-- 		</form> -->
+		</div>
+		<div class="popup-btn">
+			
+		</div>
 	</div>
 
 	<!-- Form 3: Create a task, e.g., '1st round interview of GyanaSagar' -->
@@ -217,12 +222,13 @@
 					<li>@c.name: @c.durationInMinutes | @c.credits</li>
 				}
 			</ul>
--->
+
 			<h2>@tasks.size() task(s) found!</h2>
 			<ul>
 				@for(tsk <- tasks) {
 					<li>@tsk.name - @tsk.description starts on @tsk.startDate @tsk.startHour:@tsk.startMinute | @tsk.category</li>
 				}
 			</ul>	
+			-->
 </body>
 </html>
