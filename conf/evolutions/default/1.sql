@@ -19,8 +19,9 @@ create table task (
   start_hour                varchar(255),
   start_minute              varchar(255),
   scheduled_start           timestamp,
-  status                    integer,
-  constraint ck_task_status check (status in (0,1,2,3)),
+  category_id               bigint,
+  status                    varchar(11),
+  constraint ck_task_status check (status in ('NOT_STARTED','COMPLETE','RESCHEDULED','MISSED')),
   constraint pk_task primary key (id))
 ;
 
@@ -37,6 +38,8 @@ create sequence task_seq;
 
 create sequence team_seq;
 
+alter table task add constraint fk_task_category_1 foreign key (category_id) references category (id) on delete restrict on update restrict;
+create index ix_task_category_1 on task (category_id);
 
 
 

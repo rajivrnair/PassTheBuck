@@ -222,13 +222,13 @@
 					<li>@c.name: @c.durationInMinutes | @c.credits</li>
 				}
 			</ul>
-
+-->
 			<h2>@tasks.size() task(s) found!</h2>
 			<ul>
 				@for(tsk <- tasks) {
-					<li>@tsk.name - @tsk.description starts on @tsk.startDate @tsk.startHour:@tsk.startMinute | @tsk.category</li>
+					<li>@tsk.name - @tsk.description starts on @tsk.startDate @tsk.startHour:@tsk.startMinute | @tsk.category.name | WTF!!?</li>
 				}
 			</ul>	
-			-->
+			
 </body>
 </html>

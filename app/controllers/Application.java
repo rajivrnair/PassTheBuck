@@ -43,7 +43,7 @@ public class Application extends Controller {
 			public Category parse(String input, Locale locale)
 					throws ParseException {
 				Category byId = Category.find.byId(new Long(input));
-				System.out.println("input id: " + byId.id + " - " + byId.name);
+				System.out.println(print(byId, Locale.getDefault()));
 				return byId;
 			}
 
@@ -57,7 +57,9 @@ public class Application extends Controller {
 		if (filledForm.hasErrors()) {
 			return badRequest(views.html.index.render(Team.all(), teamForm, Category.all(), categoryForm, Task.all(), taskForm));
 		} else {
-			Task.create(filledForm.get());
+			Task task = filledForm.get();
+			System.out.println("Application.newTask() for " + task.category.name);
+			Task.create(task);
 			return redirect(routes.Application.index());
 		}
 	}
