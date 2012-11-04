@@ -11,3 +11,5 @@ dist
 .target/
 .cache
 bin/
+.ensime
+.ensime_lucene/
