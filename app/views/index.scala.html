@@ -142,20 +142,30 @@
 		<!-- TODO: Need to add filters at the top of the page to change team/category -->
 	
 	<!-- Form 1: Create a category, e.g., '1st Round' or '2nd Round' -->
-	<div class="category">
+	<div class="popup-hold category">
+		<div class="popup-text">
+			<a class="popup-close" title="Close" href="#">x</a>
+			<h3>Create a Category:</h3>
 		@form(action= routes.Application.newCategory(), 'name -> "category") {
-			@inputText(categoryForm("name"), 'id -> "categoryName", 'size -> 30, 'class -> "input-css", '_label -> "Category Name", '_class -> "overall-css", '_help -> "")
-			@inputText(categoryForm("durationInMinutes"), 'id -> "durationInMinutes", 'size -> 5, 'class -> "input-css", '_label -> "Duration (in mins)", '_class -> "overall-css", '_help -> "")
-			@inputText(categoryForm("credits"), 'id -> "credits", 'size -> 5, 'class -> "input-css", '_label -> "Credits", '_class -> "overall-css", '_help -> "")
+			@inputText(categoryForm("name"), 'id -> "categoryName", 'size -> 30, 'class -> "input-css", '_label -> "Name:", '_class -> "overall-css", '_help -> "")
+			@inputText(categoryForm("durationInMinutes"), 'id -> "durationInMinutes", 'maxlength -> 5, 'class -> "input-css", '_label -> "Duration:", '_class -> "overall-css", '_help -> "")
+			@inputText(categoryForm("credits"), 'id -> "credits", 'size -> 5, 'class -> "input-css", '_label -> "Credits:", '_class -> "overall-css", '_help -> "")
 			<input type="submit" value="Submit" />
 		}
+		</div>
 	</div>
 
 	<!-- Form 2: Create a team, e.g., 'Cobalt B/E' or 'Cobalt UI' -->
-	<div class="team popup-hold">
+	<div class="popup-hold team">
 		<div class="popup-text">
+			<a class="popup-close" title="Close" href="#">x</a>
+			<h3>Create a Team:</h3>
 	@form(action= routes.Application.newTeam(), 'name -> "team") {
-		@inputText(teamForm("name"), 'id -> "teamName", 'size -> 30, 'class -> "input-css", '_label -> "Team Name", '_class -> "overall-css", '_help -> "")
+		@inputText(teamForm("name"), 'id -> "teamName", 'size -> 30, 'class -> "input-css", '_label -> "Name:", '_class -> "overall-css", '_help -> "")
+		@inputText(teamForm("description;"), 'id -> "description", 'size -> 30, 'class -> "input-css", '_label -> "Description:", '_class -> "overall-css", '_help -> "")
+		@inputText(teamForm("tasks"), 'id -> "tasks", 'size -> 30, 'class -> "input-css", '_label -> "Tasks:", '_class -> "overall-css", '_help -> "")
+		@inputText(teamForm("associatedCategories;"), 'id -> "associatedCategories;", 'size -> 30, 'class -> "input-css", '_label -> "Categories:", '_class -> "overall-css", '_help -> "")
+
 		<input type="submit" value="Submit" />
 	}
 <!-- 		<form name="team" action="/createTeam.do" method="post"> -->
@@ -165,28 +175,27 @@
 <!-- 			<input type="submit" value="Submit" /> -->
 <!-- 		</form> -->
 		</div>
-		<div class="popup-btn">
-			
-		</div>
+
 	</div>
 
 	<!-- Form 3: Create a task, e.g., '1st round interview of GyanaSagar' -->
-	<div class="task">
+	<div class="popup-hold task">
+		<div class="popup-text">
+			<a class="popup-close" title="Close" href="#">x</a>
+			<h3>Create a Task:</h3>
 	@form(action= routes.Application.newTask(), 'name -> "task") {
-		@inputText(taskForm("name"), 'id -> "taskName", 'size -> 30, 'class -> "input-css", '_label -> "Task Name", '_class -> "overall-css", '_help -> "")
-		@inputText(taskForm("description"), 'id -> "description", 'size -> 100, 'class -> "input-css", '_label -> "Description", '_class -> "overall-css", '_help -> "")
-		@inputDate(taskForm("startDate"), 'id -> "startDate", 'size -> 10, 'class -> "input-css", '_label -> "Starts On", '_class -> "overall-css", '_help -> "")
+		@inputText(taskForm("name"), 'id -> "taskName", 'size -> 30, 'class -> "input-css", '_label -> "Task Name:", '_class -> "overall-css", '_help -> "")
+		@textarea(taskForm("description"), 'id -> "description", 'size -> 100, 'class -> "textarea-css", '_label -> "Description:", '_class -> "overall-css", '_help -> "")
+		@inputDate(taskForm("startDate"), 'id -> "startDate", 'size -> 10, 'class -> "input-css", '_label -> "Starts On:", '_class -> "overall-css", '_help -> "")
 		
 		<!-- These two need to be on the same line -->
-		@inputText(taskForm("startHour"), 'id -> "startHour", 'size -> 2, 'class -> "input-css", '_label -> "At Hour:", '_class -> "overall-css", '_help -> "")
-		@inputText(taskForm("startMinute"), 'id -> "startMin", 'size -> 2, 'class -> "input-css", '_label -> "Min:", '_class -> "overall-css", '_help -> "")
-
--
+		@inputText(taskForm("startHour"), 'id -> "startHour", 'maxlength -> 2, 'class -> "input-css", '_label -> "At Hour:", '_class -> "overall-css", '_help -> "")
+		@inputText(taskForm("startMinute"), 'id -> "startMin", 'maxlength -> 2, 'class -> "input-css", '_label -> "Min:", '_class -> "overall-css", '_help -> "")
 		@select(
         taskForm("category"), 
 	        options = options(Category.options),
 	        '_default -> "--- Choose a category ---",
-	        '_label -> "Associate Category",
+	        '_label -> "Category:",
 	        '_error -> teamForm("category").error.map(_.withMessage("Please select a category"))
 		)
 
@@ -202,7 +211,8 @@
 			Assign To: <input type="text" id="taskAssignedTo" disabled="true" value="dropdown of users" /> <br />
 			<input type="submit" value="Submit" />
 		</form>
--->
+-->	
+		</div>
 	</div>
 	<!-- List of credits and other info -->
 	
@@ -229,6 +239,7 @@
 					<li>@tsk.name - @tsk.description starts on @tsk.startDate @tsk.startHour:@tsk.startMinute | @tsk.category.name | WTF!!?</li>
 				}
 			</ul>	
-			
+<script type='text/javascript' src='@routes.Assets.at("javascripts/jquery-1.8.2.js")'></script>
+<script type='text/javascript' src='@routes.Assets.at("javascripts/passthebuck.js")'></script>	
 </body>
 </html>
