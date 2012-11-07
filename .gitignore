@@ -13,3 +13,5 @@ dist
 bin/
 .ensime
 .ensime_lucene/
+PassTheBuck.sublime-project
+PassTheBuck.sublime-workspace
