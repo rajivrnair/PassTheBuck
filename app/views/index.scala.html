@@ -150,7 +150,8 @@
 			@inputText(categoryForm("name"), 'id -> "categoryName", 'size -> 30, 'class -> "input-css", '_label -> "Name:", '_class -> "overall-css", '_help -> "")
 			@inputText(categoryForm("durationInMinutes"), 'id -> "durationInMinutes", 'maxlength -> 5, 'class -> "input-css", '_label -> "Duration(in mins):", '_class -> "overall-css", '_help -> "")
 			@inputText(categoryForm("credits"), 'id -> "credits", 'size -> 5, 'class -> "input-css", '_label -> "Credits:", '_class -> "overall-css", '_help -> "")
-			<input type="submit" value="Send" class="submit-btn"/>
+			<input type="submit" value="Send" class="contact-btn submit-btn"/>
+			<input type="button" value="Cancel" class="contact-btn cancel-btn"/>
 		}
 		</div>
 	</div>
@@ -166,7 +167,8 @@
 		@inputText(teamForm("tasks"), 'id -> "tasks", 'size -> 30, 'class -> "input-css", '_label -> "Tasks:", '_class -> "overall-css", '_help -> "")
 		@inputText(teamForm("associatedCategories;"), 'id -> "categories;", 'size -> 30, 'class -> "input-css", '_label -> "Categories:", '_class -> "overall-css", '_help -> "")
 
-		<input type="submit" value="Send" class="submit-btn"/>
+		<input type="submit" value="Send" class="contact-btn submit-btn"/>
+		<input type="button" value="Cancel" class="contact-btn cancel-btn"/>
 	}
 <!-- 		<form name="team" action="/createTeam.do" method="post"> -->
 <!-- 			<h2>Create a Team</h2> -->
@@ -198,7 +200,8 @@
 	        '_error -> teamForm("category").error.map(_.withMessage("Please select a category"))
 		)
 
-		<input type="submit" value="Send" class="submit-btn"/>
+		<input type="submit" value="Send" class="contact-btn submit-btn"/>
+		<input type="button" value="Cancel" class="contact-btn cancel-btn"/>
 	}
 <!--
 		<form name="task" action="/createTask.do" method="post">

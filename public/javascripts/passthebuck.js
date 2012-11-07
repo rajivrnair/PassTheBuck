@@ -4,7 +4,9 @@ jQuery(function ($) {
 		jQuery("."+_id).show();
 	});
 
-	jQuery(".popup-close").click(function() {
+	jQuery(".popup-close, .cancel-btn").click(function() {
 		jQuery(".popup-hold").hide();
-	})
+	});
+
+	
 });
