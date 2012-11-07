@@ -194,7 +194,6 @@
 		@select(
         taskForm("category"), 
 	        options = options(Category.options),
-	        '_default -> "--- Choose a category ---",
 	        '_label -> "Category:",
 	        '_error -> teamForm("category").error.map(_.withMessage("Please select a category"))
 		)
