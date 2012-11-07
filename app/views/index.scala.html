@@ -148,7 +148,7 @@
 			<h3>Create a Category:</h3>
 		@form(action= routes.Application.newCategory(), 'name -> "category") {
 			@inputText(categoryForm("name"), 'id -> "categoryName", 'size -> 30, 'class -> "input-css", '_label -> "Name:", '_class -> "overall-css", '_help -> "")
-			@inputText(categoryForm("durationInMinutes"), 'id -> "durationInMinutes", 'maxlength -> 5, 'class -> "input-css", '_label -> "Duration:", '_class -> "overall-css", '_help -> "")
+			@inputText(categoryForm("durationInMinutes"), 'id -> "durationInMinutes", 'maxlength -> 5, 'class -> "input-css", '_label -> "Duration(in mins):", '_class -> "overall-css", '_help -> "")
 			@inputText(categoryForm("credits"), 'id -> "credits", 'size -> 5, 'class -> "input-css", '_label -> "Credits:", '_class -> "overall-css", '_help -> "")
 			<input type="submit" value="Send" class="submit-btn"/>
 		}
@@ -164,7 +164,7 @@
 		@inputText(teamForm("name"), 'id -> "teamName", 'size -> 30, 'class -> "input-css", '_label -> "Name:", '_class -> "overall-css", '_help -> "")
 		@inputText(teamForm("description;"), 'id -> "description", 'size -> 30, 'class -> "input-css", '_label -> "Description:", '_class -> "overall-css", '_help -> "")
 		@inputText(teamForm("tasks"), 'id -> "tasks", 'size -> 30, 'class -> "input-css", '_label -> "Tasks:", '_class -> "overall-css", '_help -> "")
-		@inputText(teamForm("associatedCategories;"), 'id -> "associatedCategories;", 'size -> 30, 'class -> "input-css", '_label -> "Categories:", '_class -> "overall-css", '_help -> "")
+		@inputText(teamForm("associatedCategories;"), 'id -> "categories;", 'size -> 30, 'class -> "input-css", '_label -> "Categories:", '_class -> "overall-css", '_help -> "")
 
 		<input type="submit" value="Send" class="submit-btn"/>
 	}

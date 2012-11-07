@@ -313,11 +313,12 @@ span.status span {
 }
 .textarea-css {
 	width:225px;
+	height:130px;
 }
 .submit-btn {
-	 background: url("../images/submit.png") no-repeat scroll 0 0 transparent;
+	background: url("../images/submit.png") no-repeat scroll 0 0 transparent;
     width: 50px;
-      border: 0 none;
+    border: 0 none;
     color: #FFFFFF;
     cursor: pointer;
     font-size: 1em;
@@ -327,4 +328,7 @@ span.status span {
     text-align: center;
     vertical-align: middle;
     padding-bottom: 2px;
+}
+form[name='category'] label {
+	width:137px;
 }
