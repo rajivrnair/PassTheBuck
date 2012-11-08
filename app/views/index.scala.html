@@ -240,8 +240,9 @@
 				@for(tsk <- tasks) {
 					<li>@tsk.name - @tsk.description starts on @tsk.startDate @tsk.startHour:@tsk.startMinute | @tsk.category.name | WTF!!?</li>
 				}
-			</ul>	
-<script type='text/javascript' src='@routes.Assets.at("javascripts/jquery-1.8.2.js")'></script>
-<script type='text/javascript' src='@routes.Assets.at("javascripts/passthebuck.js")'></script>	
+			</ul>
+<div id="overlay"></div>
+<script type='text/javascript' src='@routes.Assets.at("javascripts/jquery-1.8.2.min.js")'></script>
+<script type='text/javascript' src='@routes.Assets.at("javascripts/formhandler.js")'></script>	
 </body>
 </html>

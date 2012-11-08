@@ -340,11 +340,11 @@ form[name='category'] label {
 	width:137px;
 }
 div#overlay {
-	background-color: #AAAAAA;
+	background-color: #D2D2D2;
     display: none;
     height: 4085px;
     left: 0;
-    opacity: 0.9;
+    opacity: 0.5;
     position: absolute;
     top: 0;
     width: 1263px;
