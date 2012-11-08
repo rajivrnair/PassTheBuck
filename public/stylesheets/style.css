@@ -268,7 +268,7 @@ span.status span {
 	padding: 10px;
 	width: 410px;
 	position: absolute;
-	z-index: 150;
+	z-index: 9999;
 	display: none;
 	top:230px;
 	left:350px;
@@ -316,7 +316,7 @@ span.status span {
 	height:130px;
 }
 .contact-btn {
-	 border: 0 none;
+	border: 0 none;
     color: #FFFFFF;
     cursor: pointer;
     font-size: 1em;
@@ -338,4 +338,15 @@ span.status span {
 }
 form[name='category'] label {
 	width:137px;
+}
+div#overlay {
+	background-color: #AAAAAA;
+    display: none;
+    height: 4085px;
+    left: 0;
+    opacity: 0.9;
+    position: absolute;
+    top: 0;
+    width: 1263px;
+    z-index: 9998;
 }
