@@ -6,6 +6,7 @@ import java.util.Locale;
 import models.Category;
 import models.Task;
 import models.Team;
+import play.Routes;
 import play.data.Form;
 import play.data.format.Formatters;
 import play.mvc.Controller;
@@ -13,7 +14,6 @@ import play.mvc.Result;
 
 /**
  * FIXME: Move all the CUD logic into separate controllers.
- * TODO : Associate categories to team.
  */
 public class Application extends Controller {
   
@@ -28,9 +28,12 @@ public class Application extends Controller {
 	public static Result newTeam() {
 		Form<Team> filledForm = teamForm.bindFromRequest();
 		if (filledForm.hasErrors()) {
+			System.out.println("Errors: " + filledForm.errors());
 			return badRequest(views.html.index.render(Team.all(), teamForm, Category.all(), categoryForm, Task.all(), taskForm));
 		} else {
-			Team.create(filledForm.get());
+			Team team = filledForm.get();
+			System.out.println("newTeam(): " + team.id + "|" + team.description);
+			Team.create(team);
 			return redirect(routes.Application.index());
 		}
 	}
@@ -76,5 +79,13 @@ public class Application extends Controller {
 
 	public static Result deleteTask(Long id) {
 		return TODO;
+	}
+	
+	public static Result javascriptRoutes() {
+		response().setContentType("text/javascript");
+		return ok(Routes.javascriptRouter("jsRoutes", 
+				routes.javascript.Application.newCategory(), // Don't set any params in the brackets, even if the original actions are parameterized.
+				routes.javascript.Application.newTask(),
+				routes.javascript.Application.newTeam()));
 	}
 }

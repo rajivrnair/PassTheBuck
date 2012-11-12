@@ -29,9 +29,15 @@ public class Team extends Model {
 	}
 	
 	public static void create(Team team) {
+		System.out.println("Saving team: " + team);
 		team.save();
 	}
 	
+	@Override
+	public String toString() {
+		return String.format("Team-ID: %d, Name: %s, Desc: %s", id, name, description);
+	}
+
 	public static void delete(Long id){
 		find.ref(id).delete();
 	}

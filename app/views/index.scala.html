@@ -11,6 +11,9 @@
 	<link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/reset.css")">
 	<link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/app-classes.css")">
 	<link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/style.css")">
+	<script type='text/javascript' src='@routes.Assets.at("javascripts/jquery-1.8.2.min.js")'></script>
+	<script type='text/javascript' src='@routes.Assets.at("javascripts/formhandler.js")'></script>
+	<script type="text/javascript" src='@routes.Application.javascriptRoutes()'></script>
 </head>
 <body>
 	<header>
@@ -150,7 +153,7 @@
 			@inputText(categoryForm("name"), 'id -> "categoryName", 'size -> 30, 'class -> "input-css", '_label -> "Name:", '_class -> "overall-css", '_help -> "")
 			@inputText(categoryForm("durationInMinutes"), 'id -> "durationInMinutes", 'maxlength -> 5, 'class -> "input-css", '_label -> "Duration(in mins):", '_class -> "overall-css", '_help -> "")
 			@inputText(categoryForm("credits"), 'id -> "credits", 'size -> 5, 'class -> "input-css", '_label -> "Credits:", '_class -> "overall-css", '_help -> "")
-			<input type="submit" value="Send" class="contact-btn submit-btn"/>
+			<input id="categorySubmit" type="submit" value="Send" class="contact-btn submit-btn"/>
 			<input type="button" value="Cancel" class="contact-btn cancel-btn"/>
 		}
 		</div>
@@ -161,21 +164,15 @@
 		<div class="popup-text">
 			<a class="popup-close" title="Close" href="#">x</a>
 			<h3>Create a Team:</h3>
-	@form(action= routes.Application.newTeam(), 'name -> "team") {
-		@inputText(teamForm("name"), 'id -> "teamName", 'size -> 30, 'class -> "input-css", '_label -> "Name:", '_class -> "overall-css", '_help -> "")
-		@inputText(teamForm("description;"), 'id -> "description", 'size -> 30, 'class -> "input-css", '_label -> "Description:", '_class -> "overall-css", '_help -> "")
-		@inputText(teamForm("tasks"), 'id -> "tasks", 'size -> 30, 'class -> "input-css", '_label -> "Tasks:", '_class -> "overall-css", '_help -> "")
-		@inputText(teamForm("associatedCategories;"), 'id -> "categories;", 'size -> 30, 'class -> "input-css", '_label -> "Categories:", '_class -> "overall-css", '_help -> "")
-
-		<input type="submit" value="Send" class="contact-btn submit-btn"/>
-		<input type="button" value="Cancel" class="contact-btn cancel-btn"/>
-	}
-<!-- 		<form name="team" action="/createTeam.do" method="post"> -->
-<!-- 			<h2>Create a Team</h2> -->
-<!-- 			Enter the team's name: <input type="text" id="teamName" /> <br /> -->
-<!-- 			Associate Categories: <input type="text" id="teamCategories" disabled="true" value="multi-select categories" /> <br />  -->
-<!-- 			<input type="submit" value="Submit" /> -->
-<!-- 		</form> -->
+			@form(action= routes.Application.newTeam(), 'id -> "team",'name -> "team") {
+				@inputText(teamForm("name"), 'id -> "teamName", 'size -> 30, 'class -> "input-css", '_label -> "Name:", '_class -> "overall-css", '_help -> "")
+				@inputText(teamForm("description;"), 'id -> "description", 'size -> 30, 'class -> "input-css", '_label -> "Description:", '_class -> "overall-css", '_help -> "")
+				@inputText(teamForm("tasks"), 'id -> "tasks", 'size -> 30, 'class -> "input-css", '_label -> "Tasks:", '_class -> "overall-css", '_help -> "")
+				@inputText(teamForm("associatedCategories;"), 'id -> "categories;", 'size -> 30, 'class -> "input-css", '_label -> "Categories:", '_class -> "overall-css", '_help -> "")
+		
+				<input id="teamSubmit" type="submit" value="Send" class="contact-btn submit-btn"/>
+				<input type="button" value="Cancel" class="contact-btn cancel-btn"/>
+			}
 		</div>
 
 	</div>
@@ -200,7 +197,7 @@
 	        '_error -> teamForm("category").error.map(_.withMessage("Please select a category"))
 		)
 
-		<input type="submit" value="Send" class="contact-btn submit-btn"/>
+		<input id="taskSubmit" type="submit" value="Send" class="contact-btn submit-btn"/>
 		<input type="button" value="Cancel" class="contact-btn cancel-btn"/>
 	}
 <!--
@@ -241,8 +238,6 @@
 					<li>@tsk.name - @tsk.description starts on @tsk.startDate @tsk.startHour:@tsk.startMinute | @tsk.category.name | WTF!!?</li>
 				}
 			</ul>
-<div id="overlay"></div>
-<script type='text/javascript' src='@routes.Assets.at("javascripts/jquery-1.8.2.min.js")'></script>
-<script type='text/javascript' src='@routes.Assets.at("javascripts/formhandler.js")'></script>	
+	<div id="overlay"></div>
 </body>
 </html>

@@ -10,4 +10,22 @@ jQuery(function ($) {
 		$('#overlay').hide();
 	});
 	
+
+	$('#teamSubmit').click(function(e) {
+			var formData = $('#team').serialize();
+
+			alert($(this).serialize());
+
+		    jsRoutes.controllers.Application.newTeam().ajax({
+		    	data : formData,
+		        success : function(data) {
+		            alert("Work aayi aliya!");
+		        },
+		        error : function(data) {
+		        	alert("Mayire.. form submit cheyyada!");
+		        }
+		    });
+		    return false;
+		});
+
 });

@@ -3,13 +3,13 @@
 # --- !Ups
 
 -- Create teams
-insert into team(id, name, description) values (1, 'B/E', 'The Back-end team');
-insert into team(id, name, description) values (2, 'F/E', 'The Front-end team');
-insert into team(id, name, description) values (3, 'QA', 'The Quality Assurance team');
+insert into team(id, name, description) values (team_seq.nextval, 'B/E', 'The Back-end team');
+insert into team(id, name, description) values (team_seq.nextval, 'F/E', 'The Front-end team');
+insert into team(id, name, description) values (team_seq.nextval, 'QA', 'The Quality Assurance team');
 
 -- Create categories
-insert into category(id, name, duration_in_minutes, credits) values (1, 'I Round', 30, 10);
-insert into category(id, name, duration_in_minutes, credits) values (2, 'II Round', 90, 30);
+insert into category(id, name, duration_in_minutes, credits) values (category_seq.nextval, 'I Round', 30, 10);
+insert into category(id, name, duration_in_minutes, credits) values (category_seq.nextval, 'II Round', 90, 30);
 
 # --- !Downs
 delete * from team;

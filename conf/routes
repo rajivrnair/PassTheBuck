@@ -11,7 +11,10 @@ POST	/task					controllers.Application.newTask()
 POST	/category				controllers.Application.newCategory()
 
 #GET     /teams					controllers.Application.index()
-#POST    /teams/:id/delete       controllers.Application.deleteTeam(id: Long)
+#POST    /teams/:id/delete      controllers.Application.deleteTeam(id: Long)
 
 # Map static resources from the /public folder to the /assets URL path
-GET     /assets/*file               controllers.Assets.at(path="/public", file)
+GET     /assets/*file           controllers.Assets.at(path="/public", file)
+
+# Javascript routing
+GET		/javascriptRoutes		controllers.Application.javascriptRoutes()
