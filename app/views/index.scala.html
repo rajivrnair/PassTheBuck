@@ -167,8 +167,6 @@
 			@form(action= routes.Application.newTeam(), 'id -> "formTeam",'name -> "team") {
 				@inputText(teamForm("name"), 'id -> "teamName", 'size -> 30, 'class -> "input-css", '_label -> "Name:", '_class -> "overall-css", '_help -> "")
 				@inputText(teamForm("description;"), 'id -> "description", 'size -> 30, 'class -> "input-css", '_label -> "Description:", '_class -> "overall-css", '_help -> "")
-				@inputText(teamForm("tasks"), 'id -> "tasks", 'size -> 30, 'class -> "input-css", '_label -> "Tasks:", '_class -> "overall-css", '_help -> "")
-				@inputText(teamForm("associatedCategories;"), 'id -> "categories;", 'size -> 30, 'class -> "input-css", '_label -> "Categories:", '_class -> "overall-css", '_help -> "")
 		
 				<input id="teamSubmit" type="submit" value="Send" class="contact-btn submit-btn"/>
 				<input type="button" value="Cancel" class="contact-btn cancel-btn"/>
