@@ -12,14 +12,13 @@ jQuery(function ($) {
 	
 
 	$('#teamSubmit').click(function(e) {
-			var formData = $('#team').serialize();
-
-			alert($(this).serialize());
+			var formData = $('#formTeam').serialize();
 
 		    jsRoutes.controllers.Application.newTeam().ajax({
 		    	data : formData,
 		        success : function(data) {
-		            alert("Work aayi aliya!");
+		            jQuery(".popup-hold").hide();
+		            $('#overlay').hide();
 		        },
 		        error : function(data) {
 		        	alert("Mayire.. form submit cheyyada!");
