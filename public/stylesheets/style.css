@@ -44,10 +44,8 @@ nav.main ul li:hover {
 	cursor: pointer;
 }
 ul.yourstats,ul.teamstats,ul.credits {
-    font-family: arial;
     font-size: 13px;
     padding:10px;
-    color:#6E6F37;
     margin:1px 10px 0 0;
     width:260px;
 }
