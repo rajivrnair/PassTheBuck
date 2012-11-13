@@ -21,7 +21,7 @@ create table task (
   scheduled_start           timestamp,
   category_id               bigint,
   status                    varchar(11),
-  constraint ck_task_status check (status in ('NOT_STARTED','COMPLETE','RESCHEDULED','MISSED')),
+  constraint ck_task_status check (status in ('NOT_STARTED','REJECTED','COMPLETE','RESCHEDULED','MISSED')),
   constraint pk_task primary key (id))
 ;
 

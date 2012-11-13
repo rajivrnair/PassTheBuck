@@ -97,6 +97,24 @@
 							</div>
 						</a>
 					</li>
+					@for(tsk <- tasks) {
+						<li>
+						<a href="#">
+							<div class="user-role">
+								<img src="@routes.Assets.at("images/user_female.png")" width="48px">
+								<div class="role">
+									<h3>@tsk.name</h3>
+									<!-- on mouseover: @tsk.description -->
+									<span class="date">@tsk.getStartTime</span>
+								</div>
+								<span class="assigned">Assigned to:</span><span>--TBD--</span>
+								<span class="category">For a @tsk.category.name</span>
+								<span class="status">Status: <span>@tsk.status</span></span>
+								<span class="comment">--TBD--</span>
+							</div>
+						</a>
+					</li>
+					}
 				</ul>
 			</div>
 		</div>
@@ -153,7 +171,7 @@
 			@inputText(categoryForm("name"), 'id -> "categoryName", 'size -> 30, 'class -> "input-css", '_label -> "Name:", '_class -> "overall-css", '_help -> "")
 			@inputText(categoryForm("durationInMinutes"), 'id -> "durationInMinutes", 'maxlength -> 5, 'class -> "input-css", '_label -> "Duration(in mins):", '_class -> "overall-css", '_help -> "")
 			@inputText(categoryForm("credits"), 'id -> "credits", 'size -> 5, 'class -> "input-css", '_label -> "Credits:", '_class -> "overall-css", '_help -> "")
-			<input id="categorySubmit" type="submit" value="Send" class="contact-btn submit-btn"/>
+			<input id="categorySubmit" type="button" value="Send" class="contact-btn submit-btn"/>
 			<input type="button" value="Cancel" class="contact-btn cancel-btn"/>
 		}
 		</div>
@@ -166,9 +184,9 @@
 			<h3>Create a Team:</h3>
 			@form(action= routes.Application.newTeam(), 'id -> "formTeam",'name -> "team") {
 				@inputText(teamForm("name"), 'id -> "teamName", 'size -> 30, 'class -> "input-css", '_label -> "Name:", '_class -> "overall-css", '_help -> "")
-				@inputText(teamForm("description;"), 'id -> "description", 'size -> 30, 'class -> "input-css", '_label -> "Description:", '_class -> "overall-css", '_help -> "")
+				@inputText(teamForm("description"), 'id -> "description", 'size -> 30, 'class -> "input-css", '_label -> "Description:", '_class -> "overall-css", '_help -> "")
 		
-				<input id="teamSubmit" type="submit" value="Send" class="contact-btn submit-btn"/>
+				<input id="teamSubmit" type="button" value="Send" class="contact-btn submit-btn"/>
 				<input type="button" value="Cancel" class="contact-btn cancel-btn"/>
 			}
 		</div>
@@ -195,7 +213,7 @@
 	        '_error -> teamForm("category").error.map(_.withMessage("Please select a category"))
 		)
 
-		<input id="taskSubmit" type="submit" value="Send" class="contact-btn submit-btn"/>
+		<input id="taskSubmit" type="button" value="Send" class="contact-btn submit-btn"/>
 		<input type="button" value="Cancel" class="contact-btn cancel-btn"/>
 	}
 <!--
@@ -211,11 +229,9 @@
 -->	
 		</div>
 	</div>
-	<!-- List of credits and other info -->
 	
 	<!-- List of tasks for current date and current team -->
 
-			<!--
 			<h2>@teams.size() team(s) found!</h2>
 			<ul>
 				@for(t <- teams) {
@@ -229,7 +245,7 @@
 					<li>@c.name: @c.durationInMinutes | @c.credits</li>
 				}
 			</ul>
--->
+
 			<h2>@tasks.size() task(s) found!</h2>
 			<ul>
 				@for(tsk <- tasks) {
