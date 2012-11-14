@@ -198,7 +198,7 @@ span.status span {
     background: url("../images/filter_dropdown.png") no-repeat scroll 100% 0 transparent;
     color: #EEEEEE;
     display: block;
-    font-size: 16px;
+    font-size: 13px;
     font-weight: 600;
     height: 50px;
     line-height: 50px;
@@ -207,15 +207,15 @@ span.status span {
 }
 
 #filtering #upper > ul > li#categories > a {
-    background-position: 290px 25px;
+    background-position: 260px 25px;
     height: 50px;
     overflow: hidden;
     padding: 0 11px 0 16px;
-    width: 277px;
+    width: 247px;
 }
 
 #filtering #upper > ul > li#categories > a:hover, #filtering #upper > ul > li#categories > a:focus {
-    background-position: 290px -75px;
+    background-position: 260px -75px;
 }
 
 #filtering #lower {
@@ -255,7 +255,7 @@ span.status span {
 }
 #filtering #upper > ul > li#search {
     display: block;
-    padding-left: 80px;
+    padding-left: 110px;
     position: relative;
 }
 
@@ -263,7 +263,7 @@ span.status span {
     color: #BBBBBB;
     font-size: 12px;
     font-weight: normal;
-    padding-left: 0.5em;
+    padding-left: 3px;
     text-transform: none;
 }
 
@@ -277,7 +277,7 @@ a {
 
 
 #filtering #upper > ul > li#categories.open a {
-    background-position: 290px -278px;
+    background-position: 260px -278px;
 }
 
 #filtering #upper > ul > li#search input[name="search"] {
@@ -295,7 +295,7 @@ a {
 
 
 #filtering #upper > ul > li#categories .pulldown {
-    width: 306px;
+    width: 276px;
 }
  #filtering .pulldown {
     display: none;
@@ -312,8 +312,8 @@ a {
 }
 
 #filtering #upper > ul > li#categories .pulldown a {
-    font-size: 16px;
-    font-weight: 600;
+    font-size: 13px;
+    font-weight: bold;
     height: 34px;
     padding: 6px 16px 10px;
     color: #000;
@@ -340,6 +340,10 @@ a {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
+div.pulldown ul.inner  li:hover {
+    background-color: #FFFDEB;
+    font-weight: bold;
+}
 /* Popup hold */
 .popup-hold {
 	background-color: #484848;
