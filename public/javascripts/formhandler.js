@@ -1,4 +1,5 @@
 jQuery(function ($) {
+
 	jQuery("#team, #category, #task").click(function() {
 		var _id = jQuery(this).attr('id');
 		jQuery("#overlay").show();
@@ -15,10 +16,26 @@ jQuery(function ($) {
 	});
 	
 	jQuery('#teamSubmit, #categorySubmit, #taskSubmit').click(function(e) {
-			var formData = jQuery(this).closest('form').serialize();
+			var _formData = jQuery(this).closest('form').serialize();
+			var _formId = jQuery(this).closest('form').attr('id');
+			var _jsRoutes;
+			
+			switch (_formId) {
+				case 'formTeam' : 
+					_jsRoutes = jsRoutes.controllers.Teams.newTeam().ajax;
+					break;
+				case 'formCategory' :
+					_jsRoutes = jsRoutes.controllers.Categories.newCategory().ajax;
+					break;
+				case 'formTask' :
+					_jsRoutes = jsRoutes.controllers.Tasks.newTask().ajax;
+					break;
+				default:
+					break;
+			}
 
-		    jsRoutes.controllers.Application.newTeam().ajax({
-		    	data : formData,
+		    _jsRoutes({
+		    	data : _formData,
 		        success : function(data) {
 		            hideForm();
 		        },
@@ -33,4 +50,15 @@ jQuery(function ($) {
 		jQuery(".popup-hold").hide();
 		jQuery('#overlay').hide();
 	};
+
+	jQuery("li#categories").click(function() {
+		if(jQuery(this).hasClass('open')) {
+			jQuery(this).removeClass('open');
+			jQuery(".pulldown").hide();
+		} else {
+			jQuery(this).addClass('open');
+			jQuery(".pulldown").show();
+		}
+	});
+
 });
