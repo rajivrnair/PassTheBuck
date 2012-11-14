@@ -5,10 +5,14 @@
 # Home page
 GET     /                       controllers.Application.index()
 
-# Create stuff
-POST    /team					controllers.Application.newTeam()
-POST	/task					controllers.Application.newTask()
-POST	/category				controllers.Application.newCategory()
+# Tasks
+POST	/task					controllers.Tasks.newTask()
+
+# Categories
+POST	/category				controllers.Categories.newCategory()
+
+# Teams
+POST    /team					controllers.Teams.newTeam()
 
 #GET     /teams					controllers.Application.index()
 #POST    /teams/:id/delete      controllers.Application.deleteTeam(id: Long)

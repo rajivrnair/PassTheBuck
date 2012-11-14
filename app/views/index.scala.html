@@ -167,7 +167,7 @@
 		<div class="popup-text">
 			<a class="popup-close" title="Close" href="#">x</a>
 			<h3>Create a Category:</h3>
-		@form(action= routes.Application.newCategory(), 'id -> "formCategory", 'name -> "category") {
+		@form(action= routes.Categories.newCategory(), 'id -> "formCategory", 'name -> "category") {
 			@inputText(categoryForm("name"), 'id -> "categoryName", 'size -> 30, 'class -> "input-css", '_label -> "Name:", '_class -> "overall-css", '_help -> "")
 			@inputText(categoryForm("durationInMinutes"), 'id -> "durationInMinutes", 'maxlength -> 5, 'class -> "input-css", '_label -> "Duration(in mins):", '_class -> "overall-css", '_help -> "")
 			@inputText(categoryForm("credits"), 'id -> "credits", 'size -> 5, 'class -> "input-css", '_label -> "Credits:", '_class -> "overall-css", '_help -> "")
@@ -182,7 +182,7 @@
 		<div class="popup-text">
 			<a class="popup-close" title="Close" href="#">x</a>
 			<h3>Create a Team:</h3>
-			@form(action= routes.Application.newTeam(), 'id -> "formTeam",'name -> "team") {
+			@form(action= routes.Teams.newTeam(), 'id -> "formTeam",'name -> "team") {
 				@inputText(teamForm("name"), 'id -> "teamName", 'size -> 30, 'class -> "input-css", '_label -> "Name:", '_class -> "overall-css", '_help -> "")
 				@inputText(teamForm("description"), 'id -> "description", 'size -> 30, 'class -> "input-css", '_label -> "Description:", '_class -> "overall-css", '_help -> "")
 		
@@ -212,7 +212,7 @@
 		<div class="popup-text">
 			<a class="popup-close" title="Close" href="#">x</a>
 			<h3>Create a Task:</h3>
-	@form(action= routes.Application.newTask(), 'id -> "formTask", 'name -> "task") {
+	@form(action= routes.Tasks.newTask(), 'id -> "formTask", 'name -> "task") {
 		@inputText(taskForm("name"), 'id -> "taskName", 'size -> 30, 'class -> "input-css", '_label -> "Task Name:", '_class -> "overall-css", '_help -> "")
 		@textarea(taskForm("description"), 'id -> "description", 'size -> 100, 'class -> "textarea-css", '_label -> "Description:", '_class -> "overall-css", '_help -> "")
 		@inputDate(taskForm("startDate"), 'id -> "startDate", 'size -> 10, 'class -> "input-css", '_label -> "Starts On:", '_class -> "overall-css", '_help -> "")
