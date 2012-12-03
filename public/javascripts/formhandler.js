@@ -27,8 +27,8 @@ jQuery(function ($) {
 				case 'formCategory' :
 					_jsRoutes = jsRoutes.controllers.Categories.newCategory().ajax;
 					break;
-				case 'formTask' :
-					_jsRoutes = jsRoutes.controllers.Tasks.newTask().ajax;
+				case 'formInterview' :
+					_jsRoutes = jsRoutes.controllers.Interviews.newInterview().ajax;
 					break;
 				default:
 					break;

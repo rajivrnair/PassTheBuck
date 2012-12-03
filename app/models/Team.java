@@ -28,11 +28,6 @@ public class Team extends Model {
 		return find.all();
 	}
 	
-	public static void create(Team team) {
-		System.out.println("Saving team: " + team);
-		team.save();
-	}
-	
 	@Override
 	public String toString() {
 		return String.format("Team-ID: %d, Name: %s, Desc: %s", id, name, description);

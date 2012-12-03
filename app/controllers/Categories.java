@@ -18,7 +18,7 @@ public class Categories extends Controller {
 		if (filledForm.hasErrors()) {
 			return badRequest(views.html.index.render(Team.all(), teamForm, Category.all(), categoryForm, Interview.all(), taskForm));
 		} else {
-			Category.create(filledForm.get());
+			filledForm.get().save();
 			return redirect(routes.Application.index());
 		}
 	}

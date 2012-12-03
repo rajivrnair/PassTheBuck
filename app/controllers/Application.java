@@ -12,16 +12,16 @@ public class Application extends Controller {
   
 	static Form<Team> teamForm = form(Team.class);
 	static Form<Category> categoryForm = form(Category.class);
-	static Form<Interview> taskForm = form(Interview.class);
+	static Form<Interview> interviewForm = form(Interview.class);
 
 	public static Result index() {
-		return ok(views.html.index.render(Team.all(), teamForm, Category.all(), categoryForm, Interview.all(), taskForm));
+		return ok(views.html.index.render(Team.all(), teamForm, Category.all(), categoryForm, Interview.all(), interviewForm));
 	}
 
 	public static Result javascriptRoutes() {
 		response().setContentType("text/javascript");
 		return ok(Routes.javascriptRouter("jsRoutes",
-				routes.javascript.Tasks.newTask(),
+				routes.javascript.Interviews.newInterview(),
 				routes.javascript.Teams.newTeam(),
 				routes.javascript.Categories.newCategory())); // Don't set any params in the brackets, even if the original actions are parameterized.
 	}

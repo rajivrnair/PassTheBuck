@@ -19,9 +19,7 @@ public class Teams extends Controller {
 			System.out.println("Errors: " + filledForm.errors());
 			return badRequest(views.html.index.render(Team.all(), teamForm, Category.all(), categoryForm, Interview.all(), taskForm));
 		} else {
-			Team team = filledForm.get();
-			System.out.println("newTeam(): " + team.id + "|" + team.description);
-			Team.create(team);
+			filledForm.get().save();
 			return redirect(routes.Application.index());
 		}
 	}

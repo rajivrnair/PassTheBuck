@@ -8,7 +8,6 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
@@ -31,15 +30,14 @@ public class Interview extends Model {
 
 	@Required
 	public String startDate;
+
 	@Required
 	public String startHour;
+
 	@Required
 	public String startMinute;
-	// Calculated using the above fields.
-//	public DateTime scheduledStart;
 
-	// Why is this not fetching?
-	@ManyToOne(fetch=FetchType.EAGER)
+	@ManyToOne
 	public Category category;
 	
 //	@OneToMany(cascade=CascadeType.PERSIST)
@@ -85,13 +83,6 @@ public class Interview extends Model {
 	public static Finder<Long, Interview> find = new Finder<Long, Interview>(Long.class, Interview.class);
 	
 	public static List<Interview> all() {
-		List<Interview> allTasks = find.all();
-		for (Interview t : allTasks) {
-			System.out.println("Task:" + t.id + "|" + t.name);
-			System.out.println("Assoc Category:" + t.category.name);
-		}
-		return allTasks;
+		return find.fetch("category").findList();
 	}
-
-
 }

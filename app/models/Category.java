@@ -29,10 +29,6 @@ public class Category extends Model{
 		return find.all();
 	}
 
-	public static void create(Category category) {
-		category.save();
-	}
-
 	public static void delete(Long id) {
 		find.ref(id).delete();
 	}

@@ -5,8 +5,8 @@
 # Home page
 GET     /                       controllers.Application.index()
 
-# Tasks
-POST	/task					controllers.Tasks.newTask()
+# Interviews
+POST	/interview					controllers.Interviews.newInterview()
 
 # Categories
 POST	/category				controllers.Categories.newCategory()
