@@ -1,24 +1,21 @@
 package controllers;
 
 import models.Category;
-import models.Task;
+import models.Interview;
 import models.Team;
 import play.Routes;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
 
-/**
- * FIXME: Move all the CUD logic into separate controllers.
- */
 public class Application extends Controller {
   
 	static Form<Team> teamForm = form(Team.class);
 	static Form<Category> categoryForm = form(Category.class);
-	static Form<Task> taskForm = form(Task.class);
+	static Form<Interview> taskForm = form(Interview.class);
 
 	public static Result index() {
-		return ok(views.html.index.render(Team.all(), teamForm, Category.all(), categoryForm, Task.all(), taskForm));
+		return ok(views.html.index.render(Team.all(), teamForm, Category.all(), categoryForm, Interview.all(), taskForm));
 	}
 
 	public static Result javascriptRoutes() {

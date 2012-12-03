@@ -4,7 +4,7 @@ import java.text.ParseException;
 import java.util.Locale;
 
 import models.Category;
-import models.Task;
+import models.Interview;
 import models.Team;
 import play.data.Form;
 import play.data.format.Formatters;
@@ -15,7 +15,7 @@ public class Tasks extends Controller {
 
 	static Form<Team> teamForm = form(Team.class);
 	static Form<Category> categoryForm = form(Category.class);
-	static Form<Task> taskForm = form(Task.class);
+	static Form<Interview> taskForm = form(Interview.class);
 
 	public static Result newTask() {
 		
@@ -25,7 +25,7 @@ public class Tasks extends Controller {
 			public Category parse(String input, Locale locale)
 					throws ParseException {
 				Category byId = Category.find.byId(new Long(input));
-				System.out.println(print(byId, Locale.getDefault()));
+//				System.out.println(print(byId, Locale.getDefault()));
 				return byId;
 			}
 
@@ -35,13 +35,14 @@ public class Tasks extends Controller {
 			}
 		});
 		
-		Form<Task> filledForm = taskForm.bindFromRequest();
+		Form<Interview> filledForm = taskForm.bindFromRequest();
 		if (filledForm.hasErrors()) {
-			return badRequest(views.html.index.render(Team.all(), teamForm, Category.all(), categoryForm, Task.all(), filledForm));
+			return badRequest(views.html.index.render(Team.all(), teamForm, Category.all(), categoryForm, Interview.all(), filledForm));
 		} else {
-			Task task = filledForm.get();
+			Interview task = filledForm.get();
 			System.out.println("Application.newTask() for " + task.category.name);
-			Task.create(task);
+			task.save();
+//			Task.create(task);
 			return redirect(routes.Application.index());
 		}
 	}

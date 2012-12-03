@@ -1,5 +1,5 @@
 package models;
 
-public enum InterviewStatus {
+public enum Outcome {
 	PASS,FAIL
 }
