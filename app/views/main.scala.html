@@ -1,15 +1,35 @@
 @(title: String)(content: Html)
 
 <!DOCTYPE html>
+<html lang="@lang().code()">
+<head>
+	<title>Pass The Buck</title>
+	<link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/passthebuck.jpg")">
+	<link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/reset.css")">
+	<link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/app-classes.css")">
+	<link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/style.css")">
+	<script type='text/javascript' src='@routes.Assets.at("javascripts/jquery-1.8.2.min.js")'></script>
+	<script type='text/javascript' src='@routes.Assets.at("javascripts/formhandler.js")'></script>
+	<script type="text/javascript" src='@routes.Application.javascriptRoutes()'></script>
+</head>
 
-<html>
-    <head>
-        <title>@title</title>
-        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
-        <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
-        <script src="@routes.Assets.at("javascripts/jquery-1.7.1.min.js")" type="text/javascript"></script>
-    </head>
-    <body>
-        @content
-    </body>
+  <body>
+	    @if(flash.contains(Application.FLASH_ERROR_KEY)) {
+	      <div style="color: red;">
+	      	@flash().get(Application.FLASH_ERROR_KEY)
+	      </div>
+	    }
+	    @if(flash.contains(Application.FLASH_MESSAGE_KEY)) {
+	      <div style="color: blue;">
+	      	@flash().get(Application.FLASH_MESSAGE_KEY)
+	      </div>
+	    }
+		@content
+
+	<hr>
+
+	<footer>
+		<p>&copy; 2012 Pass The Buck. View details <a href="https://github.com/rajivrnair/PassTheBuck/blob/master/LICENSE">here</a>.</p>
+	</footer>
+  </body>
 </html>

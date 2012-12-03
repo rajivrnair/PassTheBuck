@@ -11,6 +11,17 @@ create table category (
   constraint pk_category primary key (id))
 ;
 
+create table credit (
+  id                        bigint not null,
+  value                     integer,
+  source                    integer,
+  source_id                 bigint,
+  awarded_date              date,
+  awarded_time              time,
+  constraint ck_credit_source check (source in (0,1)),
+  constraint pk_credit primary key (id))
+;
+
 create table interview (
   id                        bigint not null,
   name                      varchar(255),
@@ -33,11 +44,25 @@ create table team (
   constraint pk_team primary key (id))
 ;
 
+create table user (
+  id                        bigint not null,
+  external_identity         varchar(255),
+  email                     varchar(255),
+  name                      varchar(255),
+  locale                    varchar(20),
+  picture                   varchar(255),
+  constraint pk_user primary key (id))
+;
+
 create sequence category_seq;
+
+create sequence credit_seq;
 
 create sequence interview_seq;
 
 create sequence team_seq;
+
+create sequence user_seq;
 
 alter table interview add constraint fk_interview_category_1 foreign key (category_id) references category (id) on delete restrict on update restrict;
 create index ix_interview_category_1 on interview (category_id);
@@ -50,15 +75,23 @@ SET REFERENTIAL_INTEGRITY FALSE;
 
 drop table if exists category;
 
+drop table if exists credit;
+
 drop table if exists interview;
 
 drop table if exists team;
+
+drop table if exists user;
 
 SET REFERENTIAL_INTEGRITY TRUE;
 
 drop sequence if exists category_seq;
 
+drop sequence if exists credit_seq;
+
 drop sequence if exists interview_seq;
 
 drop sequence if exists team_seq;
+
+drop sequence if exists user_seq;
 

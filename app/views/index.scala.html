@@ -1,27 +1,28 @@
-@(teams: List[Team], teamForm: Form[Team], categories: List[Category], categoryForm: Form[Category], interviews: List[Interview], interviewForm: Form[Interview])
+@(teams: List[Team], teamForm: Form[Team], categories: List[Category], categoryForm: Form[Category], interviews: List[Interview], interviewForm: Form[Interview], localUser: models.User=null)
 
 @import helper._
+@import com.feth.play.module.pa.views.html._
 
 <!DOCTYPE html>
 
-<html>
-<head>
-	<title>Pass The Buck</title>
-	<link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/passthebuck.jpg")">
-	<link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/reset.css")">
-	<link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/app-classes.css")">
-	<link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/style.css")">
-	<script type='text/javascript' src='@routes.Assets.at("javascripts/jquery-1.8.2.min.js")'></script>
-	<script type='text/javascript' src='@routes.Assets.at("javascripts/formhandler.js")'></script>
-	<script type="text/javascript" src='@routes.Application.javascriptRoutes()'></script>
-</head>
-<body>
+@main("Pass The Buck") {
 	<header>
 		<div>
 			<a id="logo" href="#">Pass the Buck</a>
 			<nav class="main">
-				
 			</nav>
+		</div>
+		<div id="login_information">
+		@currentAuth() { auth =>
+			@if(auth != null) {
+				@if(localUser != null) {
+					Welcome @localUser.name - @localUser.email
+				} <br/>
+				Logged in with provider: '@auth.getProvider()' and user ID '@auth.getId()'<br/>
+				<br/><br/>
+				<a href="@com.feth.play.module.pa.controllers.routes.Authenticate.logout">Logout</a>
+			}
+		}
 		</div>
 	</header>
 	<div class="content">
@@ -258,5 +259,4 @@
 				}
 			</ul>
 	<div id="overlay"></div>
-</body>
-</html>
+}

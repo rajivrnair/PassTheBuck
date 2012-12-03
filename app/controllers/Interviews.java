@@ -35,7 +35,7 @@ public class Interviews extends Controller {
 		
 		Form<Interview> filledForm = interviewForm.bindFromRequest();
 		if (filledForm.hasErrors()) {
-			return badRequest(views.html.index.render(Team.all(), teamForm, Category.all(), categoryForm, Interview.all(), filledForm));
+			return badRequest(views.html.index.render(Team.all(), teamForm, Category.all(), categoryForm, Interview.all(), filledForm, Application.getLoggedinUser()));
 		} else {
 			filledForm.get().save();
 			return redirect(routes.Application.index());

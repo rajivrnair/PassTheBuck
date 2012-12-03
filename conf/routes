@@ -3,22 +3,28 @@
 # ~~~~
 
 # Home page
-GET     /                       controllers.Application.index()
+GET     /                       	controllers.Application.index()
+GET     /login                      controllers.Application.login()
 
 # Interviews
 POST	/interview					controllers.Interviews.newInterview()
 
 # Categories
-POST	/category				controllers.Categories.newCategory()
+POST	/category					controllers.Categories.newCategory()
 
 # Teams
-POST    /team					controllers.Teams.newTeam()
+POST    /team						controllers.Teams.newTeam()
 
-#GET     /teams					controllers.Application.index()
-#POST    /teams/:id/delete      controllers.Application.deleteTeam(id: Long)
+#GET     /teams						controllers.Application.index()
+#POST    /teams/:id/delete      	controllers.Application.deleteTeam(id: Long)
 
 # Map static resources from the /public folder to the /assets URL path
-GET     /assets/*file           controllers.Assets.at(path="/public", file)
+GET     /assets/*file           	controllers.Assets.at(path="/public", file)
 
 # Javascript routing
-GET		/javascriptRoutes		controllers.Application.javascriptRoutes()
+GET		/javascriptRoutes			controllers.Application.javascriptRoutes()
+
+# Security
+GET     /logout                     		com.feth.play.module.pa.controllers.Authenticate.logout
+GET     /authenticate/:provider     		com.feth.play.module.pa.controllers.Authenticate.authenticate(provider: String)
+GET     /authenticate/:provider/denied		controllers.Application.oAuthDenied(provider: String)

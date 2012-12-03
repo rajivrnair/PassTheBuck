@@ -11,13 +11,13 @@ public class Teams extends Controller {
 
 	static Form<Team> teamForm = form(Team.class);
 	static Form<Category> categoryForm = form(Category.class);
-	static Form<Interview> taskForm = form(Interview.class);
+	static Form<Interview> interviewForm = form(Interview.class);
 	
 	public static Result newTeam() {
 		Form<Team> filledForm = teamForm.bindFromRequest();
 		if (filledForm.hasErrors()) {
 			System.out.println("Errors: " + filledForm.errors());
-			return badRequest(views.html.index.render(Team.all(), teamForm, Category.all(), categoryForm, Interview.all(), taskForm));
+			return badRequest(views.html.index.render(Team.all(), teamForm, Category.all(), categoryForm, Interview.all(), interviewForm, Application.getLoggedinUser()));
 		} else {
 			filledForm.get().save();
 			return redirect(routes.Application.index());
