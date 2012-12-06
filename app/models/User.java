@@ -51,12 +51,20 @@ public class User extends Model {
 			user.email = identity.getEmail();
 			user.name = identity.getName();
 			user.locale = identity.getLocale();
-			user.picture = identity.getPicture();
+			user.picture = getPictureUrl(identity);
 			user.save();
 			return user;
 		}
-		throw new RuntimeException("Unsupported Authentication provider!"
-				+ authUser);
+		throw new RuntimeException("Unsupported Authentication provider!" + authUser);
+	}
+
+	// Just for Fun :D
+	private static String getPictureUrl(final GoogleAuthUser identity) {
+		String pictureUrl = identity.getPicture();
+		if(pictureUrl == null || "".equals(pictureUrl.trim())) {
+			pictureUrl = (identity.getGender() == null || "male".equals(identity.getGender())) ? "@routes.Assets.at(\"images/user_female.png\")" : "@routes.Assets.at(\"images/user_male.png\")";
+		}
+		return pictureUrl;
 	}
 
 	public static User findByAuthUserIdentity(AuthUserIdentity identity) {
