@@ -27,6 +27,7 @@
 	</header>
 	<div class="content">
 		<div id="container">
+		<table id="taskGrid"></table>
 	
 		<div id="main" class="clearfix">
 			<form id="filtering">
@@ -110,6 +111,8 @@
 				</ul>
 			</div>
 		</div>
+		
+		
 	
 	<aside>
 		<section>
@@ -260,3 +263,35 @@
 			</ul>
 	<div id="overlay"></div>
 }
+
+<script type='text/javascript' src='@routes.Assets.at("javascripts/jquery.jqGrid.src.js")'></script>
+<!-- <script type="text/javascript" src='@routes.Assets.at("javascripts/i18n/grid.locale-en.js")'></script> -->
+<script type='text/javascript'>
+jQuery("#taskGrid").jqGrid({        
+   	url:'interviews/list',
+	datatype: "json",
+	celledit: true,
+	height:"auto",
+	emptyrecords:"No interviews",
+   	colNames:['ID','Name','Description','Start Date','Start Hour','Start Minute','Category'],
+   	colModel:[
+   		{name:'id',index:'id', width:55,jsonmap:"id"},
+   		{name:'name',index:'name', width:90, jsonmap:"name",editable:true,edittype:"text"},
+   		{name:'description',index:'description', width:95,jsonmap:"description"},
+   		{name:'startDate',index:'startDate', width:55, jsonmap:"startDate"},
+   		{name:'startHour',index:'startHour', width:25,jsonmap:"startHour"},
+   		{name:'startMinute',index:'startMinute', width:25, jsonmap:"startMinute"},
+   		{name:'category',index:'category', width:60, jsonmap:"category.name"}		
+   	],
+   	rowNum:10,
+   	sortname: 'id',
+    viewrecords: true,
+	jsonReader: {
+		root: "interviews",
+		repeatitems: false
+	},
+	caption: "Interviews"
+});
+
+
+</script>
