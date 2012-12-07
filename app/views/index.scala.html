@@ -28,7 +28,7 @@
 	<div class="content">
 		<div id="container">
 		<table id="taskGrid"></table>
-	
+		<br>
 		<div id="main" class="clearfix">
 			<form id="filtering">
 				<div id="upper">
@@ -267,31 +267,40 @@
 <script type='text/javascript' src='@routes.Assets.at("javascripts/jquery.jqGrid.src.js")'></script>
 <!-- <script type="text/javascript" src='@routes.Assets.at("javascripts/i18n/grid.locale-en.js")'></script> -->
 <script type='text/javascript'>
-jQuery("#taskGrid").jqGrid({        
-   	url:'interviews/list',
-	datatype: "json",
-	celledit: true,
-	height:"auto",
-	emptyrecords:"No interviews",
-   	colNames:['ID','Name','Description','Start Date','Start Hour','Start Minute','Category'],
-   	colModel:[
-   		{name:'id',index:'id', width:55,jsonmap:"id"},
-   		{name:'name',index:'name', width:90, jsonmap:"name",editable:true,edittype:"text"},
-   		{name:'description',index:'description', width:95,jsonmap:"description"},
-   		{name:'startDate',index:'startDate', width:55, jsonmap:"startDate"},
-   		{name:'startHour',index:'startHour', width:25,jsonmap:"startHour"},
-   		{name:'startMinute',index:'startMinute', width:25, jsonmap:"startMinute"},
-   		{name:'category',index:'category', width:60, jsonmap:"category.name"}		
-   	],
-   	rowNum:10,
-   	sortname: 'id',
-    viewrecords: true,
-	jsonReader: {
-		root: "interviews",
-		repeatitems: false
-	},
-	caption: "Interviews"
+jQuery(document).ready(function(){ 
+  	var lastSel;
+  	jQuery("#taskGrid").jqGrid({        
+   		url:'interviews/list',
+		datatype: "json",
+		height:"auto",
+		emptyrecords:"No Interviews",
+   		colNames:['ID','Name','Description','Start Date','Start Hour','Start Minute','Category'],
+   		colModel:[
+   			{name:'id',index:'id', width:55,jsonmap:"id"},
+   			{name:'name',index:'name', width:105, jsonmap:"name",editable: true},
+   			{name:'description',index:'description', width:170,jsonmap:"description",editable: true,edittype: "textarea"},
+   			{name:'startDate',index:'startDate', width:75, jsonmap:"startDate",editable: true},
+   			{name:'startHour',index:'startHour', width:70,jsonmap:"startHour",editable: true},
+   			{name:'startMinute',index:'startMinute', width:70, jsonmap:"startMinute",editable: true},
+   			{name:'category',index:'category', width:100, jsonmap:"category.name",editable: true}		
+   		],
+   		rowNum:10,
+   		sortname: 'id',
+    	viewrecords: true,
+		jsonReader: {
+			root: "interviews",
+			repeatitems: false
+		},
+		onSelectRow: function(id){
+    		if(id && id!=lastSel){ 
+        		jQuery('#taskGrid').restoreRow(lastSel); 
+        		lastSel=id; 
+     		}
+     		jQuery('#taskGrid').editRow(id, true); 
+   		},	
+   		caption: "Interviews",
+   		editurl:'interview/edit'
+	});
 });
-
 
 </script>
