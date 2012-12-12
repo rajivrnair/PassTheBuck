@@ -28,8 +28,7 @@ public class Interviews extends Controller {
 			@Override
 			public Category parse(String input, Locale locale)
 					throws ParseException {
-				Category byId = Category.find.byId(new Long(input));
-				return byId;
+				return Category.find.byId(Long.valueOf(input));
 			}
 
 			@Override
@@ -43,6 +42,31 @@ public class Interviews extends Controller {
 			return badRequest(views.html.index.render(Team.all(), teamForm, Category.all(), categoryForm, Interview.all(), filledForm, Application.getLoggedinUser()));
 		} else {
 			filledForm.get().save();
+			return redirect(routes.Application.index());
+		}
+	}
+	
+	public static Result editInterview() {
+		Formatters.register(Category.class, new Formatters.SimpleFormatter<Category>() {
+
+			@Override
+			public Category parse(String input, Locale locale)
+					throws ParseException {
+				// Not a great way to do things! Category name might not be unique.
+				return Category.find.where().eq("name", input).findUnique();
+			}
+
+			@Override
+			public String print(Category cat, Locale locale) {
+				return cat.id + ":" + cat.name;
+			}
+		});
+		
+		Form<Interview> filledForm = interviewForm.bindFromRequest();
+		if (filledForm.hasErrors()) {
+			return badRequest(views.html.index.render(Team.all(), teamForm, Category.all(), categoryForm, Interview.all(), filledForm, Application.getLoggedinUser()));
+		} else {
+			filledForm.get().update();
 			return redirect(routes.Application.index());
 		}
 	}

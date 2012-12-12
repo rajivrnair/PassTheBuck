@@ -8,6 +8,7 @@ GET     /login                      controllers.Application.login()
 
 # Interviews
 POST	/interview					controllers.Interviews.newInterview()
+POST	/interview/edit				controllers.Interviews.editInterview()
 GET		/interviews/list			controllers.Interviews.list()
 
 # Categories
