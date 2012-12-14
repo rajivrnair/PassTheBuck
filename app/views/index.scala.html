@@ -268,6 +268,12 @@
 <!-- <script type="text/javascript" src='@routes.Assets.at("javascripts/i18n/grid.locale-en.js")'></script> -->
 <script type='text/javascript'>
 jQuery(document).ready(function(){ 
+	var categories = {
+	@for((c,i) <- categories.zipWithIndex) {
+		@if(i!=0){,}"@c.name":"@c.name"
+	}
+	}
+
   	var lastSel;
   	jQuery("#taskGrid").jqGrid({        
    		url:'interviews/list',
@@ -282,7 +288,7 @@ jQuery(document).ready(function(){
    			{name:'startDate',index:'startDate', width:75, jsonmap:"startDate",editable: true},
    			{name:'startHour',index:'startHour', width:70,jsonmap:"startHour",editable: true},
    			{name:'startMinute',index:'startMinute', width:70, jsonmap:"startMinute",editable: true},
-   			{name:'category',index:'category', width:100, jsonmap:"category.name",editable: true}		
+   			{name:'category',index:'category', width:100, jsonmap:"category.name",editable: true, edittype: "select", editoptions:{value:categories}}		
    		],
    		rowNum:10,
    		sortname: 'id',
