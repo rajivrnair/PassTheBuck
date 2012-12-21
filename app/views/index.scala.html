@@ -269,9 +269,9 @@
 <script type='text/javascript'>
 jQuery(document).ready(function(){ 
 	var categories = {
-	@for((c,i) <- categories.zipWithIndex) {
-		@if(i!=0){,}"@c.name":"@c.name"
-	}
+		@for((c,i) <- categories.zipWithIndex) {
+			@if(i!=0){,}"@c.id":"@c.name"
+		}
 	}
 
   	var lastSel;

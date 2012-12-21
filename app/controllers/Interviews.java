@@ -52,8 +52,7 @@ public class Interviews extends Controller {
 			@Override
 			public Category parse(String input, Locale locale)
 					throws ParseException {
-				// Not a great way to do things! Category name might not be unique.
-				return Category.find.where().eq("name", input).findUnique();
+				return Category.find.byId(Long.valueOf(input));
 			}
 
 			@Override
