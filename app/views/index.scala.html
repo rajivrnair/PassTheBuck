@@ -27,8 +27,6 @@
 	</header>
 	<div class="content">
 		<div id="container">
-		<table id="taskGrid"></table>
-		<br>
 		<div id="main" class="clearfix">
 			<form id="filtering">
 				<div id="upper">
@@ -58,7 +56,10 @@
 					</ul>
 				</div>
 			</form>
-			<div id="listings-wrapper">
+		<table id="taskGrid"></table>
+		<div id="gridpager"></div> 	
+		<br>
+<!--			<div id="listings-wrapper">
 				<ul id="listings">
 					<li>
 						<a href="#">
@@ -97,7 +98,7 @@
 								<img src="@routes.Assets.at("images/user_female.png")" width="48px">
 								<div class="role">
 									<h3>@tsk.name</h3>
-									<!-- on mouseover: @tsk.description -->
+									<!-- on mouseover: @tsk.description --><!--
 									<span class="date">@tsk.getStartTime</span>
 								</div>
 								<span class="assigned">Assigned to:</span><span>--TBD--</span>
@@ -109,8 +110,8 @@
 					</li>
 					}
 				</ul>
-			</div>
-		</div>
+			</div> -->
+		</div> 
 		
 		
 	
@@ -267,6 +268,14 @@
 <script type='text/javascript' src='@routes.Assets.at("javascripts/jquery.jqGrid.src.js")'></script>
 <!-- <script type="text/javascript" src='@routes.Assets.at("javascripts/i18n/grid.locale-en.js")'></script> -->
 <script type='text/javascript'>
+function addTaskRow() {
+	var parameters = {
+    	rowID : "new_row",
+    	initdata : {},
+    	position :"first"
+	};
+	jQuery("#taskGrid").jqGrid('addRow',parameters)
+}
 jQuery(document).ready(function(){ 
 	var categories = {
 		@for((c,i) <- categories.zipWithIndex) {
@@ -277,6 +286,9 @@ jQuery(document).ready(function(){
   	var lastSel;
   	jQuery("#taskGrid").jqGrid({        
    		url:'interviews/list',
+		altRows: true,
+		pager: "gridpager",
+		loadui: "disable",
 		datatype: "json",
 		height:"auto",
 		emptyrecords:"No Interviews",
@@ -306,6 +318,18 @@ jQuery(document).ready(function(){
    		},	
    		caption: "Interviews",
    		editurl:'interview/edit'
+	});
+//	jQuery("#taskGrid").navGrid('#gridpager',{parameters},prmEdit, prmAdd, prmDel, prmSearch, prmView);
+	jQuery("#taskGrid").navGrid('#gridpager',{
+		add :true,
+		addtext : "Add Interview", 
+		addtitle : "Create a interview", 
+		addfunc: addTaskRow,
+		edit :false,
+		search :false,
+		view :false,
+		del :false,
+		refresh :false
 	});
 });
 
