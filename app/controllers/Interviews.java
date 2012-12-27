@@ -22,7 +22,7 @@ public class Interviews extends Controller {
 	static Form<Category> categoryForm = form(Category.class);
 	static Form<Interview> interviewForm = form(Interview.class);
 
-	public static Result newInterview() {
+	public static Result save() {
 		Formatters.register(Category.class, new Formatters.SimpleFormatter<Category>() {
 
 			@Override
@@ -41,31 +41,13 @@ public class Interviews extends Controller {
 		if (filledForm.hasErrors()) {
 			return badRequest(views.html.index.render(Team.all(), teamForm, Category.all(), categoryForm, Interview.all(), filledForm, Application.getLoggedinUser()));
 		} else {
-			filledForm.get().save();
-			return redirect(routes.Application.index());
-		}
-	}
-	
-	public static Result editInterview() {
-		Formatters.register(Category.class, new Formatters.SimpleFormatter<Category>() {
-
-			@Override
-			public Category parse(String input, Locale locale)
-					throws ParseException {
-				return Category.find.byId(Long.valueOf(input));
+			Interview interview = filledForm.get();
+			if(interview.id == -1) {
+				interview.id = null;
+				interview.save();
+			} else {
+				interview.update();
 			}
-
-			@Override
-			public String print(Category cat, Locale locale) {
-				return cat.id + ":" + cat.name;
-			}
-		});
-		
-		Form<Interview> filledForm = interviewForm.bindFromRequest();
-		if (filledForm.hasErrors()) {
-			return badRequest(views.html.index.render(Team.all(), teamForm, Category.all(), categoryForm, Interview.all(), filledForm, Application.getLoggedinUser()));
-		} else {
-			filledForm.get().update();
 			return redirect(routes.Application.index());
 		}
 	}

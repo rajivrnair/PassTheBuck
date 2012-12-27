@@ -58,59 +58,7 @@
 			</form>
 		<table id="taskGrid"></table>
 		<div id="gridpager"></div> 	
-		<br>
-<!--			<div id="listings-wrapper">
-				<ul id="listings">
-					<li>
-						<a href="#">
-							<div class="user-role">
-								<img src="@routes.Assets.at("images/user.png")" width="48px">
-								<div class="role">
-									<h3>Kuppusamy</h3>
-									<span class="date">02-Nov-2012 / 12.30PM</span>
-								</div>
-								<span class="assigned">Assigned to:</span><span>Rajiv Nair</span>
-								<span class="category">For a BE interview</span>
-								<span class="status">Status: <span>Reject</span></span>
-								<span class="comment">The candidate is poor in basics of Java</span>
-							</div>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<div class="user-role">
-								<img src="@routes.Assets.at("images/user_female.png")" width="48px">
-								<div class="role">
-									<h3>Mariama</h3>
-									<span class="date">02-Nov-2012 / 12.30PM</span>
-								</div>
-								<span class="assigned">Assigned to:</span><span>Vijay Nair</span>
-								<span class="category">For a UI interview</span>
-								<span class="status">Status: <span>Reject</span></span>
-								<span class="comment">The candidate is poor in basics of Java</span>
-							</div>
-						</a>
-					</li>
-					@for(tsk <- interviews) {
-						<li>
-						<a href="#">
-							<div class="user-role">
-								<img src="@routes.Assets.at("images/user_female.png")" width="48px">
-								<div class="role">
-									<h3>@tsk.name</h3>
-									<!-- on mouseover: @tsk.description --><!--
-									<span class="date">@tsk.getStartTime</span>
-								</div>
-								<span class="assigned">Assigned to:</span><span>--TBD--</span>
-								<span class="category">For a @tsk.category.name</span>
-								<span class="status">Status: <span>@tsk.status</span></span>
-								<span class="comment">--TBD--</span>
-							</div>
-						</a>
-					</li>
-					}
-				</ul>
-			</div> -->
+			<br>
 		</div> 
 		
 		
@@ -189,59 +137,10 @@
 
 	</div>
 
-	<!-- Form : Edit a task, e.g., '1st round interview of GyanaSagar' -->
-	<div class="popup-hold edit-task">
-		<div class="popup-text">
-			<a class="popup-close" title="Close" href="#">x</a>
-			<h3>Edit an Interview:</h3>
-		
-				<input id="teamSubmit" type="submit" value="Send" class="contact-btn submit-btn"/>
-				<input type="button" value="Cancel" class="contact-btn cancel-btn"/>
-			
-		</div>
-
-	</div>
-
-
-	<!-- Form 3: Create a task, e.g., '1st round interview of GyanaSagar' -->
-	<div class="popup-hold task">
-		<div class="popup-text">
-			<a class="popup-close" title="Close" href="#">x</a>
-			<h3>Create an Interview:</h3>
-	@form(action= routes.Interviews.newInterview(), 'id -> "formInterview", 'name -> "task") {
-		@inputText(interviewForm("name"), 'id -> "taskName", 'size -> 30, 'class -> "input-css", '_label -> "Task Name:", '_class -> "overall-css", '_help -> "")
-		@textarea(interviewForm("description"), 'id -> "description", 'size -> 100, 'class -> "textarea-css", '_label -> "Description:", '_class -> "overall-css", '_help -> "")
-		@inputDate(interviewForm("startDate"), 'id -> "startDate", 'size -> 10, 'class -> "input-css", '_label -> "Starts On:", '_class -> "overall-css", '_help -> "")
-		
-		<!-- These two need to be on the same line -->
-		@inputText(interviewForm("startHour"), 'id -> "startHour", 'maxlength -> 2, 'class -> "input-css", '_label -> "At Hour:", '_class -> "overall-css", '_help -> "")
-		@inputText(interviewForm("startMinute"), 'id -> "startMin", 'maxlength -> 2, 'class -> "input-css", '_label -> "Min:", '_class -> "overall-css", '_help -> "")
-		@select(
-        interviewForm("category"), 
-	        options = options(Category.options),
-	        '_label -> "Category:",
-	        '_error -> teamForm("category").error.map(_.withMessage("Please select a category"))
-		)
-
-		<input id="taskSubmit" type="button" value="Send" class="contact-btn submit-btn"/>
-		<input type="button" value="Cancel" class="contact-btn cancel-btn"/>
-	}
-<!--
-		<form name="task" action="/createTask.do" method="post">
-			<h2>Create a Task</h2>
-			Name: <input type="text" id="taskName" /> <br />
-			Description: <input type="text" id="taskDescription" /> <br />
-			Start's On: <input type="text" disabled="true" id="taskStartDate" value="choose date" /> At: <input type="text" disabled="true" id="taskStartTime" value="choose time" /> <br />
-			Category: <input type="text" id="taskCategory" disabled="true" value="dropdown of categories" /> <br />
-			Assign To: <input type="text" id="taskAssignedTo" disabled="true" value="dropdown of users" /> <br />
-			<input type="submit" value="Submit" />
-		</form>
--->	
 		</div>
 	</div>
 	
 	<!-- List of interviews for current date and current team -->
-
 			<h2>@teams.size() team(s) found!</h2>
 			<ul>
 				@for(t <- teams) {
@@ -270,7 +169,7 @@
 <script type='text/javascript'>
 function addTaskRow() {
 	var parameters = {
-    	rowID : "new_row",
+    	rowID : "-1",
     	initdata : {},
     	position :"first"
 	};

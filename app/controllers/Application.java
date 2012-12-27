@@ -45,7 +45,7 @@ public class Application extends Controller {
 	public static Result javascriptRoutes() {
 		response().setContentType("text/javascript");
 		return ok(Routes.javascriptRouter("jsRoutes",
-				routes.javascript.Interviews.newInterview(),
+				routes.javascript.Interviews.save(),
 				routes.javascript.Teams.newTeam(),
 				routes.javascript.Categories.newCategory())); // Don't set any params in the brackets, even if the original actions are parameterized.
 	}
