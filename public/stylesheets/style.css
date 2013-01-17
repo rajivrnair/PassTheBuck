@@ -1,7 +1,7 @@
 body > header {
 	background-color: #292929;
 }
-header > div {
+header > div#logoHeader {
 	height:180px;
 }
 header #logo {
@@ -13,6 +13,26 @@ header #logo {
 	position: absolute;
 	top:50px;
 	left:130px;
+}
+span#login {
+    float: right;
+    color:#fff;
+    margin-right: 10px;
+    margin-top:10px;
+    font-size: 14px;
+}
+span#logout {
+    color: #fff;
+    float: right;
+    margin-top: 10px;
+    font-size: 14px;
+    margin-right: 10px;
+}
+span#logout a {
+    color: #fff;
+}
+span#logout a:hover {
+     text-decoration: underline;
 }
 div#container {
 	background-color: #FFFFFF;

@@ -7,22 +7,17 @@
 
 @main("Pass The Buck") {
 	<header>
-		<div>
+		<div id="logoHeader">
 			<a id="logo" href="#">Pass the Buck</a>
-			<nav class="main">
-			</nav>
-		</div>
-		<div id="login_information">
-		@currentAuth() { auth =>
-			@if(auth != null) {
-				@if(localUser != null) {
-					Welcome @localUser.name - @localUser.email
-				} <br/>
-				Logged in with provider: '@auth.getProvider()' and user ID '@auth.getId()'<br/>
-				<br/><br/>
-				<a href="@com.feth.play.module.pa.controllers.routes.Authenticate.logout">Logout</a>
-			}
-		}
+			
+				@currentAuth() { auth =>
+					@if(auth != null) {
+						@if(localUser != null) {
+							 <span id="logout"><a href="@com.feth.play.module.pa.controllers.routes.Authenticate.logout">Logout</a></span>  <span id="login">Welcome, @localUser.name |</span>
+						}	
+					}
+				}
+			
 		</div>
 	</header>
 	<div class="content">
