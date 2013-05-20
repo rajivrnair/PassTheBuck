@@ -8,6 +8,7 @@ import play.Routes;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
+import static play.data.Form.*;
 
 import com.feth.play.module.pa.PlayAuthenticate;
 import com.feth.play.module.pa.providers.AuthProvider;

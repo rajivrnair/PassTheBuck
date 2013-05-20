@@ -6,6 +6,7 @@ import models.Team;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
+import static play.data.Form.*;
 
 public class Categories extends Controller {
 
