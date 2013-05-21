@@ -37,6 +37,6 @@ Apply it and the aplication should now be loaded up.
 
 - Ideally, you should install the scala ide for eclipse. See [http://scala-ide.org/docs/tutorials/play20scalaide20/index.html](http://scala-ide.org/docs/tutorials/play20scalaide20/index.html) and [http://scala-ide.org/docs/user/gettingstarted.html#gettingstarted-getting-started](http://scala-ide.org/docs/user/gettingstarted.html#gettingstarted-getting-started) for more details. 
 
-I've installed the 2.9.x version which is available at [http://scala-ide.org/download/current.html](http://scala-ide.org/download/current.html). Copy the update site url and install it in Eclipse. Look at [http://scala-ide.org/docs/user/advancedsetup.html](http://scala-ide.org/docs/user/advancedsetup.html) and remember to set the JDT setting.
+- I've installed the 2.9.x version which is available at [http://scala-ide.org/download/current.html](http://scala-ide.org/download/current.html). Copy the update site url and install it in Eclipse. Look at [http://scala-ide.org/docs/user/advancedsetup.html](http://scala-ide.org/docs/user/advancedsetup.html) and remember to set the JDT setting.
 
 -  By now you should've imported the project into eclipse. You might still see some errors but playing around with the classpath in Eclipse should see you through. What're you waiting for? Start Coding!
