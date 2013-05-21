@@ -1,3 +1,11 @@
+/* Overriding bootstrap style to fix the alignment */
+ul, ol {
+    margin: 0 0;
+}
+/** end **/
+html,body {
+    height: 100%;
+}
 body > header {
 	background-color: #292929;
 }
@@ -452,4 +460,8 @@ div#overlay {
     top: 0;
     width: 1263px;
     z-index: 9998;
+}
+/** helper classes **/
+.full-height {
+    min-height: 100%;
 }
