@@ -461,6 +461,11 @@ div#overlay {
     width: 1263px;
     z-index: 9998;
 }
+.btn-signin {
+    height: 42px;
+    border-radius: 5px;
+    overflow: hidden;
+}
 /** helper classes **/
 .full-height {
     min-height: 100%;
