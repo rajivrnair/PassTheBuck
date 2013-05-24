@@ -45,8 +45,8 @@
 				</div>
 				<div id="lower">
 					<ul id="types" class="clearfix">
-						<li id="team">Team</li>
-						<li id="category">Category</li>
+						<li id="_team" data-target="#teamModal" data-toggle="modal">Team</li>
+						<li id="_category" data-target="#categoryModal" data-toggle="modal">Category</li>
 						<li id="task">Interview</li>
 					</ul>
 				</div>
@@ -102,35 +102,71 @@
 		<!-- TODO: Need to add filters at the top of the page to change team/category -->
 	
 	<!-- Form 1: Create a category, e.g., '1st Round' or '2nd Round' -->
-	<div class="popup-hold category">
-		<div class="popup-text">
-			<a class="popup-close" title="Close" href="#">x</a>
-			<h3>Create a Category:</h3>
-		@form(action= routes.Categories.newCategory(), 'id -> "formCategory", 'name -> "category") {
-			@inputText(categoryForm("name"), 'id -> "categoryName", 'size -> 30, 'class -> "input-css", '_label -> "Name:", '_class -> "overall-css", '_help -> "")
-			@inputText(categoryForm("durationInMinutes"), 'id -> "durationInMinutes", 'maxlength -> 5, 'class -> "input-css", '_label -> "Duration(in mins):", '_class -> "overall-css", '_help -> "")
-			@inputText(categoryForm("credits"), 'id -> "credits", 'size -> 5, 'class -> "input-css", '_label -> "Credits:", '_class -> "overall-css", '_help -> "")
-			<input id="categorySubmit" type="button" value="Send" class="contact-btn submit-btn"/>
-			<input type="button" value="Cancel" class="contact-btn cancel-btn"/>
-		}
+	<div id="categoryModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="categoryModalLabel" aria-hidden="true">
+	  <div class="modal-header">
+	    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+	    <h3 id="categoryModalLabel">Create a Category:</h3>
+	  </div>
+	  <div class="modal-body">
+	  	<div class="alert hide alert-success">
+            <div>Successfully created the category.</div>
+         </div>
+	    <form action="routes.Categories.newCategory()" method="POST" id="formCategory" name="category" class="form-horizontal">			
+			<div class="control-group">
+		    	<label class="control-label" for="categoryName">Name:</label>
+			    <div class="controls">
+			      <input type="text" id="categoryName" placeholder="Name" name="name" />
+			    </div>
+		    </div>
+		    <div class="control-group">
+		    	<label class="control-label" for="durationInMinutes">Duration(in mins):</label>
+			    <div class="controls">
+			      <input type="text" id="durationInMinutes" placeholder="Duration(in mins)" name="durationInMinutes" />
+			    </div>
+		    </div>
+		    <div class="control-group">
+		    	<label class="control-label" for="credits">Credits:</label>
+			    <div class="controls">
+			      <input type="text" id="credits" placeholder="Credits" name="credits" />
+			    </div>
+		    </div>
+	  </form>
+	  </div>
+	  <div class="modal-footer">
+	    <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+	    <button class="btn btn-primary" id="categorySubmit" data-form="#formCategory">Submit</button>
 		</div>
 	</div>
 
 	<!-- Form 2: Create a team, e.g., 'Cobalt B/E' or 'Cobalt UI' -->
-	<div class="popup-hold team">
-		<div class="popup-text">
-			<a class="popup-close" title="Close" href="#">x</a>
-			<h3>Create a Team:</h3>
-			@form(action= routes.Teams.newTeam(), 'id -> "formTeam",'name -> "team") {
-				@inputText(teamForm("name"), 'id -> "teamName", 'size -> 30, 'class -> "input-css", '_label -> "Name:", '_class -> "overall-css", '_help -> "")
-				@inputText(teamForm("description"), 'id -> "description", 'size -> 30, 'class -> "input-css", '_label -> "Description:", '_class -> "overall-css", '_help -> "")
 		
-				<input id="teamSubmit" type="button" value="Send" class="contact-btn submit-btn"/>
-				<input type="button" value="Cancel" class="contact-btn cancel-btn"/>
-			}
+	<div id="teamModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="teamModalLabel" aria-hidden="true">
+	  <div class="modal-header">
+	    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+	    <h3 id="teamModalLabel">Create a Team:</h3>
+	  </div>
+	  <div class="modal-body">
+	  	<div class="alert hide alert-success">
+            <div>Successfully created the team.</div>
+         </div>
+	    <form action="routes.Teams.newTeam()" method="POST" id="formTeam" name="team" class="form-horizontal">			
+			<div class="control-group">
+		    	<label class="control-label" for="teamName">Name:</label>
+			    <div class="controls">
+			      <input type="text" id="teamName" placeholder="Name" name="name" />
+			    </div>
+		    </div>
+		    <div class="control-group">
+		    	<label class="control-label" for="description">Description:</label>
+			    <div class="controls">
+			      <textarea id="description" placeholder="Description" name="description" ></textarea>
+			    </div>
 		</div>
+	  </form>
 	</div>
-
+	  <div class="modal-footer">
+	    <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+	    <button class="btn btn-primary" id="teamSubmit" data-form="#formTeam">Submit</button>
 		</div>
 	</div>
 	

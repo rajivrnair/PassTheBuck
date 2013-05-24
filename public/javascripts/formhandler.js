@@ -16,9 +16,11 @@ jQuery(function ($) {
 	});
 	
 	jQuery('#teamSubmit, #categorySubmit, #taskSubmit').click(function(e) {
-			var _formData = jQuery(this).closest('form').serialize();
-			var _formId = jQuery(this).closest('form').attr('id');
-			var _jsRoutes;
+			var $this = $(this),
+				$form = $( $this.data("form") || $this.closest('form') ),
+				_formData = $form.serialize(),
+				_formId = $form.attr('id'),
+				_jsRoutes;
 			
 			switch (_formId) {
 				case 'formTeam' : 
@@ -37,7 +39,11 @@ jQuery(function ($) {
 		    _jsRoutes({
 		    	data : _formData,
 		        success : function(data) {
+		        	$form.parent().find(".alert").removeClass("hide");
+		            setTimeout(function(){
 		            hideForm();
+		            	$form.parent().find(".alert").addClass("hide");
+		            },1500);
 		        },
 		        error : function(data) {
 		        	alert("Mayire.. form submit cheyyada!");
@@ -47,8 +53,7 @@ jQuery(function ($) {
 	});
 
 	var hideForm = function() {
-		jQuery(".popup-hold").hide();
-		jQuery('#overlay').hide();
+		$('.modal').modal("hide");
 	};
 
 	jQuery("li#categories").click(function() {
