@@ -14,16 +14,16 @@ jQuery(function ($) {
 		jQuery("#overlay").show();
 		jQuery(".edit-task").show();
 	});
-	
+
 	jQuery('#teamSubmit, #categorySubmit, #taskSubmit').click(function(e) {
 			var $this = $(this),
 				$form = $( $this.data("form") || $this.closest('form') ),
 				_formData = $form.serialize(),
 				_formId = $form.attr('id'),
 				_jsRoutes;
-			
+
 			switch (_formId) {
-				case 'formTeam' : 
+				case 'formTeam' :
 					_jsRoutes = jsRoutes.controllers.Teams.newTeam().ajax;
 					break;
 				case 'formCategory' :
@@ -36,20 +36,20 @@ jQuery(function ($) {
 					break;
 			}
 
-		    _jsRoutes({
-		    	data : _formData,
-		        success : function(data) {
-		        	$form.parent().find(".alert").removeClass("hide");
-		            setTimeout(function(){
-		            hideForm();
-		            	$form.parent().find(".alert").addClass("hide");
-		            },1500);
-		        },
-		        error : function(data) {
-		        	alert("Mayire.. form submit cheyyada!");
-		        }
-		    });
-		    return false;
+			_jsRoutes({
+				data : _formData,
+				success : function(data) {
+					$form.parent().find(".alert").removeClass("hide");
+					setTimeout(function(){
+					hideForm();
+						$form.parent().find(".alert").addClass("hide");
+					},1500);
+				},
+				error : function(data) {
+					alert("Mayire.. form submit cheyyada!");
+				}
+			});
+			return false;
 	});
 
 	var hideForm = function() {
