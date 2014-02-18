@@ -4,7 +4,7 @@ Setting Up The Application
 ##Installing Play
 
 1. Download [http://www.playframework.org/](http://www.playframework.org/)
-2. See [www.playframework.org/documentation](www.playframework.org/documentation) --> 'Installing Play' to install play.
+2. See [www.playframework.org/documentation](www.playframework.org/documentation) --> 'Installing Play' to install Play.
 
 ##Git Stuff
 
