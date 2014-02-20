@@ -26,7 +26,7 @@ This should clone repository from the remote server onto your local drive.
     Resolving deltas: 100% (10/10), done.
     nrajiv@blr-nairr-nw:/codebase/workspace$
 
-- To test that the aplication has been downloaded properly, go to the PassTheBuck directory and type the command `play run`.
+- To test that the aplication has been downloaded properly, go to the PassTheBuck directory and type the command 'play run'.
 Once the application starts, go to `http://localhost:9000` and log-in using your google account. Now
 you should see a warning saying that a db script needs to be applied.
 
